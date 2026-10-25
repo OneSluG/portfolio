@@ -7,9 +7,9 @@
     <!-- Подключаем современный шрифт из Google Fonts -->
     <link rel="preconnect" href="https://googleapis.com" />
     <link rel="preconnect" href="https://gstatic.com" crossorigin />
-    <script type="module" crossorigin src="/portfolio/assets/main-DYnS9n3b.js"></script>
+    <script type="module" crossorigin src="/portfolio/assets/main-BXyeqL9P.js"></script>
     <link rel="modulepreload" crossorigin href="/portfolio/assets/modulepreload-polyfill-P2Xu9kJm.js">
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/main-D32C8t8P.css">
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/main-DftCAOc0.css">
   </head>
   <body>
     <!-- Шапка сайта -->
@@ -31,51 +31,73 @@
         <div class="projects-grid">
           <!-- Карточка 1: -->
           <article class="project-card">
-            <div class="card-image">
-              <!-- В будущем сюда можно вставить скриншот сайта (например, /src/images/coffee.jpg) -->
-              <div class="image-placeholder">💪</div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">KroppFitness</h3>
-              <p class="card-text">Адаптивный лендинг для фитнес клуба</p>
-              <!-- Важно: путь ведет на HTML-файл внутри папки projects -->
-              <a href="/portfolio/projects/kroppfitness/index.html" class="card-btn">Смотреть проект →</a>
+            <!-- Оборачиваем всю область картинки в ссылку <a> -->
+            <a href="/portfolio/projects/kroppfitness/index.html" class="project-card__image-wrapper">
+              <img src="/portfolio/img/mockup-kropp.webp" class="project-card__img" alt="Кропп Фитнес" />
+              <div class="project-card__overlay">
+                <span class="project-card__link-text">Перейти на сайт →</span>
+              </div>
+            </a>
+
+            <!-- Контентная часть -->
+            <div class="project-card__content">
+              <h3 class="project-card__title">KroppFitness</h3>
+              <p class="project-card__text">Современный адаптивный лендинг для фитнес-клуба премиум-класса с кастомными формами записи.</p>
+              <a href="/portfolio/projects/kroppfitness/index.html" class="project-card__btn">Смотреть проект</a>
             </div>
           </article>
 
           <!-- Карточка 2: -->
           <article class="project-card">
-            <div class="card-image">
-              <div class="image-placeholder">💪</div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Positivus</h3>
-              <p class="card-text">Сайт агентства цифрового маркетинга, предлагает целый ряд услуг, включая SEO, контекстную рекламу (PPC), маркетинг в социальных сетях и создание контента.</p>
-              <a href="/portfolio/projects/positivus/index.html" class="card-btn">Смотреть проект →</a>
+            <!-- Оборачиваем всю область картинки в ссылку <a> -->
+            <a href="/portfolio/projects/cyberpunk/index.html" class="project-card__image-wrapper">
+              <img src="/portfolio/img/mockup-cyberpunk.webp" class="project-card__img" alt="Кропп Фитнес" />
+              <div class="project-card__overlay">
+                <span class="project-card__link-text">Перейти на сайт →</span>
+              </div>
+            </a>
+
+            <!-- Контентная часть -->
+            <div class="project-card__content">
+              <h3 class="project-card__title">Cyberpunk</h3>
+              <p class="project-card__text">Сайт продажи игры Cyberpunk 2077: все издания, акции и скидки</p>
+              <a href="/portfolio/projects/cyberpunk/index.html" class="project-card__btn">Смотреть проект</a>
             </div>
           </article>
 
           <!-- Карточка 3: -->
           <article class="project-card">
-            <div class="card-image">
-              <div class="image-placeholder">💪</div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">VeloShop</h3>
-              <p class="card-text">Магазин велосипедов с самой быстрой доставкой</p>
-              <a href="/portfolio/projects/veloshop/index.html" class="card-btn">Смотреть проект →</a>
+            <!-- Оборачиваем всю область картинки в ссылку <a> -->
+            <a href="/portfolio/projects/positivus/index.html" class="project-card__image-wrapper">
+              <img src="/portfolio/img/mockup-positivus.webp" class="project-card__img" alt="Кропп Фитнес" />
+              <div class="project-card__overlay">
+                <span class="project-card__link-text">Перейти на сайт →</span>
+              </div>
+            </a>
+
+            <!-- Контентная часть -->
+            <div class="project-card__content">
+              <h3 class="project-card__title">Positivus</h3>
+              <p class="project-card__text">Сайт агентства цифрового маркетинга, предлагает целый ряд услуг, включая SEO, контекстную рекламу (PPC), маркетинг в социальных сетях и создание контента.</p>
+              <a href="/portfolio/projects/positivus/index.html" class="project-card__btn">Смотреть проект</a>
             </div>
           </article>
 
           <!-- Карточка 4: -->
           <article class="project-card">
-            <div class="card-image">
-              <div class="image-placeholder">💪</div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Cyberpunk</h3>
-              <p class="card-text">Сайт продажи игры Cyberpunk 2077: все издания, акции и скидки</p>
-              <a href="/portfolio/projects/cyberpunk/index.html" class="card-btn">Смотреть проект →</a>
+            <!-- Оборачиваем всю область картинки в ссылку <a> -->
+            <a href="/portfolio/projects/veloshop/index.html" class="project-card__image-wrapper">
+              <img src="/portfolio/img/mockup-veloshop.webp" class="project-card__img" alt="Кропп Фитнес" />
+              <div class="project-card__overlay">
+                <span class="project-card__link-text">Перейти на сайт →</span>
+              </div>
+            </a>
+
+            <!-- Контентная часть -->
+            <div class="project-card__content">
+              <h3 class="project-card__title">VeloShop</h3>
+              <p class="project-card__text">Магазин велосипедов с самой быстрой доставкой</p>
+              <a href="/portfolio/projects/veloshop/index.html" class="project-card__btn">Смотреть проект</a>
             </div>
           </article>
 
