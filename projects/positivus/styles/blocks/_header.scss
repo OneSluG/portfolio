@@ -1,0 +1,88 @@
+.header {
+	padding-top: 60px;
+
+	@include desktop {
+		padding-top: 30px;
+	}
+	@include mobile {
+		padding-top: 15px;
+	}
+
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: 40px;
+
+		@include desktop {
+			column-gap: 20px;
+		}
+	}
+
+	&__logo {
+		@include tablet {
+			max-width: 120px;
+		}
+
+		@include mobile {
+			max-width: 144px;
+		}
+	}
+
+	&__menu {
+		font-size: 20px;
+		display: contents;
+
+		@include desktop {
+			font-size: 18px;
+		}
+		@include tablet {
+			font-size: 16px;
+		}
+
+		&-list {
+			display: flex;
+			align-items: center;
+			column-gap: 40px;
+
+			@include desktop {
+				column-gap: 20px;
+			}
+		}
+
+		&-link {
+			box-sizing: border-box;
+			height: 48px;
+			display: inline-flex;
+			align-items: center;
+			position: relative;
+			white-space: nowrap;
+
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				width: 0;
+				height: 2px;
+				translate: -50%;
+				background-color: currentColor;
+				transition-duration: var(--transition-duration);
+			}
+
+			&:hover {
+				&::after {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	&__button {
+		@include desktop {
+			padding-inline: 15px;
+			font-size: 16px;
+			height: 48px;
+		}
+	}
+}

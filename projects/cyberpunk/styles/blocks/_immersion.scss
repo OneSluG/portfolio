@@ -1,0 +1,114 @@
+@use "../config" as *;
+
+.immersion {
+  background-color: var(--color-yellow);
+  color: var(--color-dark);
+
+  &__wrapper {
+    padding-block: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__monitor {
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 26px;
+    grid-column: 1;
+
+    &-logos {
+      display: flex;
+      gap: 25px;
+      max-width: 540px;
+      justify-content: center;
+      align-items: center;
+
+      @include tablet {
+        flex-direction: column;
+        row-gap: 25px;
+      }
+      @include mobile {
+        flex-direction: row;
+        height: 44px;
+      }
+    }
+
+    &-logo--hp {
+      background: url("../../img/hp-logo.svg") no-repeat center/cover;
+      max-width: 80px;
+      height: 80px;
+      width: 100%;
+      flex-shrink: 0;
+      @include mobile {
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    &-logo--cross {
+      background: url("../../img/cross.svg") no-repeat center/cover;
+      max-width: 90px;
+      width: 100%;
+      height: 20px;
+      flex-shrink: 0;
+      @include mobile {
+        width: 44px;
+        height: 20px;
+      }
+    }
+
+    &-logo--cyber {
+      background: url("../../img/Cyberpunk_logo1.svg") no-repeat center/cover;
+      max-width: 320px;
+      aspect-ratio: 4 / 1;
+      height: 80px;
+      flex-shrink: 0;
+      @include mobile {
+        width: 175px;
+        height: 44px;
+      }
+    }
+  }
+
+  &__content {
+    grid-column: 2;
+
+    @include mobile {
+      grid-column: 1;
+    }
+  }
+
+  &__title {
+    margin-bottom: 25px;
+  }
+
+  &__description {
+    margin-bottom: 25px;
+  }
+
+  &__advantages {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    margin-bottom: 40px;
+
+    &-item {
+      display: flex;
+      align-items: center;
+
+      & span {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+      }
+    }
+  }
+}

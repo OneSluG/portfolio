@@ -1,0 +1,71 @@
+@use "../config" as *;
+
+.header {
+  background: url(../../img/header_bg1.jpg) no-repeat center/cover;
+
+  &__wrapper {
+    position: relative;
+    height: 100vh;
+  }
+
+  &__topline {
+    @include flex-center;
+    justify-content: space-between;
+
+    @include mobile {
+      flex-direction: column;
+      row-gap: 10px;
+    }
+  }
+
+  &__logo-link {
+    @include flex-center;
+    width: 296px;
+    height: 74px;
+    background: url(../../img/Cyberpunk_logo1.svg) no-repeat center/cover;
+
+    @include mobile-s {
+      width: 200px;
+      height: 50px;
+    }
+  }
+
+  &__soc1als-list {
+    display: flex;
+    column-gap: 40px;
+  }
+
+  &__soc1als-link {
+    @include flex-center;
+    width: 30px;
+    height: 30px;
+  }
+
+  &__banner {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    background-color: var(--color-yellow);
+    max-width: 624px;
+    position: absolute;
+    bottom: 0;
+    right: var(--container-padding-x);
+    padding: 70px;
+    clip-path: polygon(50px 0%, 100% 0%, 100% calc(100% - 50px), calc(100% - 50px) 100%, 0% 100%, 0% 50px);
+
+    @include mobile {
+      @include flex-center;
+      padding: 30px;
+      margin-inline: calc(var(--container-padding-x) * -1);
+      font-size: 30px;
+      text-align: center;
+    }
+  }
+
+  &__banner-button {
+    align-self: start;
+    @include mobile {
+      align-self: center;
+    }
+  }
+}

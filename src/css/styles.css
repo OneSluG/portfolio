@@ -1,0 +1,174 @@
+/* Базовые сбросы стилей */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Plus Jakarta Sans", sans-serif;
+	background-color: #0f172a; /* Глубокий темный фон */
+	color: #f8fafc;
+	line-height: 1.5;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+/* Шапка */
+.header {
+	padding: 60px 0 40px;
+	text-align: center;
+	border-bottom: 1px solid #1e293b;
+}
+
+.logo {
+	font-size: 2.5rem;
+	font-weight: 700;
+	letter-spacing: -1px;
+}
+
+.logo span {
+	color: #38bdf8; /* Голубой акцентный цвет */
+}
+
+.subtitle {
+	color: #94a3b8;
+	margin-top: 10px;
+	font-size: 1.1rem;
+}
+
+/* Сетка портфолио */
+.portfolio {
+	padding: 60px 0;
+}
+
+.section-title {
+	font-size: 2rem;
+	margin-bottom: 40px;
+	position: relative;
+}
+
+.section-title::after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	width: 50px;
+	height: 4px;
+	background-color: #38bdf8;
+	border-radius: 2px;
+}
+
+/* Сетка Grid */
+.projects-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 30px;
+}
+
+/* Стили карточек */
+.project-card {
+	background-color: #1e293b;
+	border-radius: 16px;
+	overflow: hidden;
+	border: 1px solid #334155;
+	display: flex;
+	flex-direction: column;
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease,
+		border-color 0.3s ease;
+}
+
+.project-card:hover {
+	transform: translateY(-8px);
+	border-color: #38bdf8;
+	box-shadow:
+		0 20px 25px -5px rgba(0, 0, 0, 0.5),
+		0 10px 10px -5px rgba(56, 189, 248, 0.1);
+}
+
+/* Изображение внутри карточки */
+.card-image {
+	height: 200px;
+	background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 1px solid #334155;
+}
+
+.image-placeholder {
+	font-size: 4rem;
+	transition: transform 0.3s ease;
+}
+
+.project-card:hover .image-placeholder {
+	transform: scale(1.2) rotate(5deg);
+}
+
+/* Контент карточки */
+.card-content {
+	padding: 25px;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.card-title {
+	font-size: 1.3rem;
+	margin-bottom: 12px;
+}
+
+.card-text {
+	color: #94a3b8;
+	font-size: 0.95rem;
+	margin-bottom: 25px;
+	flex-grow: 1; /* Кнопки всегда будут на одном уровне */
+}
+
+/* Кнопка */
+.card-btn {
+	display: inline-block;
+	text-decoration: none;
+	background-color: #334155;
+	color: #fff;
+	padding: 12px 20px;
+	border-radius: 8px;
+	text-align: center;
+	font-weight: 500;
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
+}
+
+.project-card:hover .card-btn:not(.disabled) {
+	background-color: #38bdf8;
+	color: #0f172a;
+}
+
+/* Карточка в разработке */
+.project-card.incoming {
+	opacity: 0.6;
+	border-style: dashed;
+}
+
+.card-btn.disabled {
+	background-color: transparent;
+	border: 1px solid #334155;
+	color: #64748b;
+	cursor: not-allowed;
+}
+
+/* Подвал */
+.footer {
+	padding: 40px 0;
+	text-align: center;
+	border-top: 1px solid #1e293b;
+	color: #64748b;
+	font-size: 0.9rem;
+}

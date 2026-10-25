@@ -1,0 +1,111 @@
+.team {
+  padding-block: 70px;
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 80px;
+
+    @include mobile {
+      margin-bottom: 40px;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    background-color: var(--color-accent);
+    padding: 0px 8px;
+    border-radius: 7px;
+  }
+
+  &__description {
+    font-size: 18px;
+    max-width: 580px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+
+    @include desktop {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 30px;
+    }
+  }
+  &__button {
+    display: flex;
+    min-width: 270px;
+    align-self: end;
+
+    @include mobile-s {
+      align-self: center;
+      width: 100%;
+    }
+  }
+}
+
+.team-card {
+  height: 100%;
+  border-radius: 45px;
+  border: var(--border);
+  box-shadow: 0 5px 0 0 var(--color-dark);
+  padding: 35px 40px;
+
+  @include mobile {
+    padding: 40px 50px;
+  }
+
+  &__header {
+    display: flex;
+    column-gap: 20px;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+  &__name {
+    font-size: 20px;
+  }
+  &__post {
+    font-size: 18px;
+  }
+  &__link {
+    @include flex-center;
+    @include square(34px);
+    color: var(--color-accent);
+    background-color: var(--color-dark);
+    border-radius: 50%;
+    align-self: flex-start;
+    flex-shrink: 0;
+    margin-left: auto;
+
+    & svg {
+      width: 80%;
+      fill: var(--color-accent);
+    }
+  }
+
+  &__body {
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid var(--color-dark);
+
+    @include mobile {
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+  }
+}

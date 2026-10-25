@@ -1,0 +1,151 @@
+.contact-us {
+  padding-block: 70px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 80px;
+
+    @include mobile {
+      margin-bottom: 40px;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  &__title {
+    background-color: var(--color-accent);
+    padding: 0px 8px;
+    border-radius: 7px;
+  }
+
+  &__description {
+    font-size: 18px;
+    max-width: 580px;
+  }
+
+  &__content {
+    padding: 60px 0 60px 100px;
+    background-color: var(--color-gray);
+    border-radius: 45px;
+    overflow-x: hidden;
+    background-image: url(../../img/form-bg-img.svg);
+    background-position: right -325px top 50%;
+    background-repeat: no-repeat;
+
+    @include tablet {
+      background-image: none;
+    }
+
+    @include mobile {
+      padding: 40px 30px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    max-width: 556px;
+    row-gap: 25px;
+
+    @include mobile {
+      max-width: 556px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+
+    @include mobile {
+      row-gap: 20px;
+    }
+  }
+
+  &__request-types {
+    display: flex;
+    column-gap: 35px;
+  }
+}
+
+.radios {
+  &__item {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+  }
+}
+
+.radio {
+  user-select: none;
+  transition-duration: var(--transition-duration);
+  &:hover {
+    opacity: 0.7;
+  }
+  &__emulator {
+    @include flex-center;
+    @include square(28px);
+
+    border-radius: 50%;
+    border: var(--border);
+    position: relative;
+
+    &::after {
+      @include abs-center;
+      @include square(50%);
+
+      content: "";
+      background-color: var(--color-accent);
+      border-radius: 50%;
+      transition: all var(--transition-duration) ease;
+      transform: scale(0);
+    }
+  }
+  &__input {
+    &:checked + .radio__emulator::after {
+      transform: scale(1);
+    }
+    &:focus-visible + .radio__emulator {
+      box-shadow: 0 0 0 3px var(--color-accent);
+      border-color: #007bff;
+    }
+  }
+  //   &:hover {
+  //     & .radio__emulator {
+  //       border: 1px solid var(--color-gray-alt);
+  //     }
+  //     & .radio__label {
+  //       color: var(--color-gray-alt);
+  //     }
+  //   }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+
+  &__label {
+    font-size: 16px;
+  }
+
+  &__input {
+    font-size: 18px;
+    border: var(--border);
+    border-radius: 14px;
+    padding: 18px 30px;
+    outline: none;
+    resize: none;
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--color-accent);
+    }
+    &--text-area {
+      min-height: 190px;
+      width: 100%;
+    }
+  }
+}

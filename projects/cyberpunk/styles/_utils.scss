@@ -1,0 +1,52 @@
+@use "config" as *;
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+  @include mobile {
+    --container-padding-x: 12px;
+  }
+}
+
+.hidden-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+.visible-mobile {
+  @include mobile-above {
+    display: none !important;
+  }
+}
+.hidden-x {
+  overflow-x: hidden;
+}
+.button {
+  font-size: 24px;
+  padding: 19px 50px;
+  font-weight: 700;
+  color: var(--color-yellow);
+  background-color: var(--color-dark);
+
+  @include mobile {
+    padding: 10px 30px;
+    font-size: 20px;
+  }
+}
+.button-alt {
+  font-size: 24px;
+  padding: 19px 50px;
+  font-weight: 700;
+  color: var(--color-dark);
+  background-color: var(--color-yellow);
+
+  @include mobile {
+    padding: 10px 30px;
+    font-size: 20px;
+  }
+}

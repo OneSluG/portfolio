@@ -1,0 +1,33 @@
+{
+  "name": "Portfolio",
+  "version": "1.0.0",
+  "description": "Моё портфолио проектов",
+  "type": "module",
+  "homepage": "https://OneSluG.github.io/portfolio",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com"
+  },
+  "keywords": [],
+  "author": "OneSluG",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com"
+  },
+  "dependencies": {
+    "vite": "^8.3.4"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "sass": "^1.105.2",
+    "sass-embedded": "^1.106.1"
+  }
+}

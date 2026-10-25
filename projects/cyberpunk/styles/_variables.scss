@@ -1,0 +1,13 @@
+:root {
+  --container-width: 1280px;
+  --container-padding-x: 35px;
+  --container-max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+
+  --color-yellow: #f8f200;
+  --color-dark: #000000;
+  --color-light: #ffffff;
+  --color-gray: #777777;
+  --color-blue: #52bedc;
+
+  --transition-duration: 0.2s;
+}

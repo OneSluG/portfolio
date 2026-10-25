@@ -1,0 +1,333 @@
+.footer {
+  margin-top: 70px;
+  color: var(--color-light);
+
+  @include mobile {
+    padding-inline: 0;
+  }
+  &__wrapper {
+    background-color: var(--color-dark);
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    padding: 55px 60px 0;
+
+    @include mobile {
+      border-radius: 0;
+      padding: 50px 30px 0 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 37px;
+    }
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 65px;
+
+    @include tablet {
+      flex-direction: column;
+      row-gap: 37px;
+    }
+    @include mobile {
+      display: contents;
+    }
+  }
+  &__menu-list {
+    display: flex;
+    column-gap: 40px;
+
+    @include tablet {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 15px;
+    }
+  }
+  &__menu-link {
+    position: relative;
+    padding-block: 10px;
+    &::after {
+      content: "";
+      background-color: currentColor;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      position: absolute;
+      translate: -50%;
+      transition: var(--transition-duration);
+    }
+
+    &:hover {
+      opacity: 0.8;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__soc1als {
+    display: flex;
+    column-gap: 20px;
+
+    @include mobile {
+      order: 2;
+    }
+
+    &-link {
+      @include square(30px);
+      @include flex-center;
+      position: relative;
+      color: var(--color-dark);
+      background-color: var(--color-light);
+      border-radius: 50%;
+
+      & svg {
+        width: 80%;
+        aspect-ratio: 1;
+      }
+      &:hover {
+        background-color: var(--color-accent);
+      }
+    }
+  }
+  &__body {
+    display: flex;
+    justify-content: space-between;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 37px;
+    }
+    &-contacts {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+      align-items: start;
+
+      @include mobile {
+        align-items: center;
+        text-align: center;
+      }
+    }
+    &-title {
+      background-color: var(--color-accent);
+      color: var(--color-dark);
+      border-radius: 7px;
+      padding-inline: 5px;
+      font-size: 18px;
+    }
+  }
+
+  &__extra {
+    display: flex;
+    column-gap: 40px;
+    padding-block: 50px;
+    margin-top: 50px;
+    border-top: 1px solid var(--color-light);
+    font-size: 18px;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 15px;
+      padding-top: 37px;
+      margin-top: 37px;
+      order: 2;
+      margin-top: 0;
+    }
+  }
+}
+
+.footer-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 40px;
+  background-color: var(--color-dark-alt);
+  border-radius: 14px;
+  column-gap: 20px;
+
+  @include tablet {
+    flex-direction: column;
+    row-gap: 22px;
+    padding: 30px;
+  }
+
+  &__input {
+    background-color: var(--color-dark-alt);
+    color: var(--color-light);
+    height: 68px;
+    border: 1px solid var(--color-light);
+    border-radius: 14px;
+    padding-inline: 35px;
+    outline: none;
+
+    &:focus,
+    &:hover {
+      border-color: var(--color-accent);
+    }
+  }
+
+  &__button {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+
+    @include tablet {
+      width: 100%;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.footer-form {
+  position: relative; /* Нужно для абсолютного позиционирования сообщения */
+  // ... ваши текущие стили флексбокса
+
+  &__message {
+    position: absolute;
+    bottom: -35px; /* Отобразится чуть ниже формы */
+    left: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--transition-duration) ease,
+      visibility var(--transition-duration) ease;
+
+    @include tablet {
+      bottom: -30px;
+      left: 50%;
+      translate: -50% 0; /* Центрируем на мобильных */
+      width: 100%;
+      text-align: center;
+    }
+
+    // Модификатор успешной отправки
+    &--success {
+      opacity: 1;
+      visibility: visible;
+      color: var(--color-accent); /* Зеленый/акцентный цвет успеха */
+    }
+
+    // Модификатор ошибки
+    &--error {
+      opacity: 1;
+      visibility: visible;
+      color: #ff4757; /* Красный цвет ошибки */
+    }
+  }
+}
+
+/* Базовое состояние скрытого модального окна */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Перекрывает абсолютно всё на странице */
+
+  /* Плавное скрытие */
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  /* Темный полупрозрачный фон */
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px); /* Легкое размытие заднего плана */
+  }
+
+  /* Белое окошко с контентом */
+  &__content {
+    position: relative;
+    background-color: #ffffff;
+    color: var(--color-dark, #191a23);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+    /* Эффект вылета окошка */
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+  }
+
+  /* Иконка, заголовки и текст */
+  &__icon {
+    margin-bottom: 20px;
+  }
+  &__title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  &__text {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+  }
+
+  /* Кнопка закрытия внутри окна */
+  &__btn {
+    width: 100%;
+    background-color: var(--color-accent, #2ed573);
+    color: var(--color-dark, #191a23);
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  /* Крестик в углу */
+  &__close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #999999;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+    &:hover {
+      color: #333333;
+    }
+  }
+
+  /* 🔥 АКТИВНОЕ СОСТОЯНИЕ (Когда окно открыто) */
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+
+    .modal__content {
+      transform: translateY(0); /* Окошко плавно встает на место */
+    }
+  }
+}
