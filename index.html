@@ -6,10 +6,11 @@
     <title>Моё Портфолио | Верстка сайтов</title>
     <!-- Подключаем современный шрифт из Google Fonts -->
     <link rel="preconnect" href="https://googleapis.com" />
-    <link rel="preconnect" href="https://gstatic.com" crossorigin />
-    <script type="module" crossorigin src="/portfolio/assets/main-BXyeqL9P.js"></script>
+    <link rel="preconnect" href="https://gstatic.com" crossorigin />
+    <link rel="icon" type="image/x-icon" href="/portfolio/favicon.ico" />
+    <script type="module" crossorigin src="/portfolio/assets/main-CaM6rCA1.js"></script>
     <link rel="modulepreload" crossorigin href="/portfolio/assets/modulepreload-polyfill-P2Xu9kJm.js">
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/main-DftCAOc0.css">
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/main-Dwl0tDno.css">
   </head>
   <body>
     <!-- Шапка сайта -->
@@ -101,7 +102,25 @@
             </div>
           </article>
 
-          <!-- Карточка 5: Заглушка для будущего проекта -->
+          <!-- Карточка 5: -->
+          <article class="project-card">
+            <!-- Оборачиваем всю область картинки в ссылку <a> -->
+            <a href="/portfolio/projects/my-new-project/index.html" class="project-card__image-wrapper">
+              <!-- <img src="/img/mockup-veloshop.webp" class="project-card__img" alt="Кропп Фитнес" /> -->
+              <div class="project-card__overlay">
+                <span class="project-card__link-text">Перейти на сайт →</span>
+              </div>
+            </a>
+
+            <!-- Контентная часть -->
+            <div class="project-card__content">
+              <h3 class="project-card__title">my-new-project</h3>
+              <p class="project-card__text">my-new-project</p>
+              <a href="/portfolio/projects/my-new-project/index.html" class="project-card__btn">Смотреть проект</a>
+            </div>
+          </article>
+
+          <!-- Карточка 6: Заглушка для будущего проекта -->
           <article class="project-card incoming">
             <div class="card-image">
               <div class="image-placeholder">🚀</div>
