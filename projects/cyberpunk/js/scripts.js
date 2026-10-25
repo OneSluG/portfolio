@@ -1,4 +1,3 @@
-import "../styles/styles.scss";
 document.addEventListener("DOMContentLoaded", () => {
   // --- ЭЛЕМЕНТЫ ЗАГРУЗКИ ФАЙЛА ---
   const dropZone = document.querySelector(".file-upload__label");
