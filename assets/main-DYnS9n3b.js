@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-P2Xu9kJm.js";console.log(`Главная страница портфолио успешно запущена!`);
