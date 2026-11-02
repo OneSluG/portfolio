@@ -1,3 +1,5 @@
+@use "../config" as *;
+
 .contact-us {
   padding-block: 70px;
 
@@ -30,7 +32,7 @@
     background-color: var(--color-gray);
     border-radius: 45px;
     overflow-x: hidden;
-    background-image: url(../../img/form-bg-img.svg);
+    background-image: url(../img/form-bg-img.svg);
     background-position: right -325px top 50%;
     background-repeat: no-repeat;
 
@@ -99,14 +101,21 @@
       content: "";
       background-color: var(--color-accent);
       border-radius: 50%;
-      transition: all var(--transition-duration) ease;
-      transform: scale(0);
+      transition: scale var(--transition-duration) ease;
+      scale: 0;
     }
   }
   &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rectangle(0 0 0 0);
+
     &:checked + .radio__emulator::after {
-      transform: scale(1);
+      scale: 1;
     }
+
     &:focus-visible + .radio__emulator {
       box-shadow: 0 0 0 3px var(--color-accent);
       border-color: #007bff;

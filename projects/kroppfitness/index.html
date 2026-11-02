@@ -7,44 +7,37 @@
 
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
+
+    <script src="./js/scripts.js" type="module"></script>
   </head>
   <body>
     <header class="header">
-      <a href="/" class="header-logo">
+      <a href="#" class="header-logo">
         <img class="header-logo-img" src="img/logo.png" alt="KroppFitness" width="135" height="25" loading="lazy" />
       </a>
-      <nav class="header-menu">
+      <nav class="header-menu" id="header-menu">
         <ul class="header-menu-list">
           <li class="header-menu-item">
-            <a href="/" class="header-menu-link is-current">Home</a>
+            <a href="#" class="header-menu-link is-current">Home</a>
           </li>
           <li class="header-menu-item">
-            <a href="/" class="header-menu-link">Pages</a>
+            <a href="#" class="header-menu-link">Pages</a>
           </li>
           <li class="header-menu-item">
-            <a href="/" class="header-menu-link">Portfolio</a>
+            <a href="#" class="header-menu-link">Portfolio</a>
           </li>
           <li class="header-menu-item">
-            <a href="/" class="header-menu-link">Blog</a>
+            <a href="#" class="header-menu-link">Blog</a>
           </li>
           <li class="header-menu-item">
-            <a href="/" class="header-menu-link">Shop</a>
+            <a href="#" class="header-menu-link">Shop</a>
           </li>
         </ul>
       </nav>
       <div class="header-actions">
         <button class="header-book-button button" type="button">Book now</button>
-        <button class="header-burger-button" type="button" title="Открыть меню">
-          <span class="visually-hidden">Открыть меню</span>
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 39.5C30.7696 39.5 39.5 30.7696 39.5 20C39.5 9.23045 30.7696 0.5 20 0.5C9.23045 0.5 0.5 9.23045 0.5 20C0.5 30.7696 9.23045 39.5 20 39.5Z" stroke="white" />
-            <path d="M9.5 15.5H31.5" stroke="white" stroke-dasharray="22 22" />
-            <path d="M9.5 15.5H31.5" stroke="white" stroke-dasharray="22 22" />
-            <path d="M9.5 20.5H31.5" stroke="white" stroke-dasharray="22 22" />
-            <path d="M9.5 20.5H31.5" stroke="white" stroke-dasharray="22 22" />
-            <path d="M9.5 25.5H31.5" stroke="white" stroke-dasharray="22 22" />
-            <path d="M9.5 25.5H31.5" stroke="white" stroke-dasharray="22 22" />
-          </svg>
+        <button class="burger-button" type="button" title="Открыть меню" aria-expanded="false" aria-controls="header-menu">
+          <span class="burger-button__line"></span>
         </button>
       </div>
     </header>
@@ -268,7 +261,7 @@
       <div class="footer-wrapper">
         <div class="footer-main container">
           <div class="footer-header">
-            <a href="/" class="footer-logo">
+            <a href="#" class="footer-logo">
               <img class="footer-logo-img" src="img/logo.png" alt="KroppFitness" width="270" height="50" loading="lazy" />
             </a>
             <div class="footer-header-title">
@@ -327,7 +320,7 @@
               <div class="socia1s">
                 <ul class="socia1s-list">
                   <li class="socia1s-item">
-                    <a href="/" class="socia1s-link">
+                    <a href="#" class="socia1s-link">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                         <path
                           fill="currentColor"
@@ -337,7 +330,7 @@
                     </a>
                   </li>
                   <li class="socia1s-item">
-                    <a href="/" class="socia1s-link">
+                    <a href="#" class="socia1s-link">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                         <path
                           fill="currentColor"
@@ -347,7 +340,7 @@
                     </a>
                   </li>
                   <li class="socia1s-item">
-                    <a href="/" class="socia1s-link">
+                    <a href="#" class="socia1s-link">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                         <path
                           fill="currentColor"
@@ -357,7 +350,7 @@
                     </a>
                   </li>
                   <li class="socia1s-item">
-                    <a href="/" class="socia1s-link">
+                    <a href="#" class="socia1s-link">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                         <path
                           fill="currentColor"
@@ -367,7 +360,7 @@
                     </a>
                   </li>
                   <li class="socia1s-item">
-                    <a href="/" class="socia1s-link">
+                    <a href="#" class="socia1s-link">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                         <path
                           fill="currentColor"
@@ -384,12 +377,35 @@
         <div class="footer-extra-wrapper">
           <div class="footer-extra container">
             © 2022 Qode Interactive, All Rights Reserved |
-            <a href="/">Privacy Policy</a>
+            <a href="#">Privacy Policy</a>
             |
-            <a href="/">Contact Us</a>
+            <a href="#">Contact Us</a>
           </div>
         </div>
       </div>
     </footer>
+    <div class="header-mobile-menu" id="mobileMenu" aria-hidden="true">
+      <div class="header-mobile-menu__inner">
+        <nav class="header-mobile-menu__nav">
+          <ul class="header-mobile-menu__list">
+            <li class="header-mobile-menu__item">
+              <a href="#" class="header-mobile-menu__link">Home</a>
+            </li>
+            <li class="header-mobile-menu__item">
+              <a href="#" class="header-mobile-menu__link">Pages</a>
+            </li>
+            <li class="header-mobile-menu__item">
+              <a href="#" class="header-mobile-menu__link">Portfolio</a>
+            </li>
+            <li class="header-mobile-menu__item">
+              <a href="#" class="header-mobile-menu__link">Blog</a>
+            </li>
+            <li class="header-mobile-menu__item">
+              <a href="#" class="header-mobile-menu__link">Shop</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </body>
 </html>

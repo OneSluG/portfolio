@@ -1,3 +1,5 @@
+@use "../config" as *;
+
 .team {
   padding-block: 70px;
   &__header {

@@ -1,5 +1,8 @@
+@use "../config" as *;
+
 .testimonials {
   padding-block: 70px;
+  color: #000;
 
   &__header {
     display: flex;
@@ -32,48 +35,73 @@
     background-color: var(--color-dark);
     border-radius: 45px;
     padding: 66px 0 80px 0;
-    overflow-x: hidden;
+    overflow: hidden;
 
     @include tablet {
-      padding: 30px 30px 44px 30px;
+      padding: 30px 0px 44px 0px;
       row-gap: 44px;
     }
   }
 
+  /* Контейнер-обертка */
+  /* Контейнер-обертка (ДОБАВИЛИ СЮДА СЕЛЕКТОР &__slider) */
+  &__slider {
+    width: 100%;
+    position: relative;
+
+    /* Дополнительная защита на случай, если родной CSS не успел подгрузиться */
+    display: flex;
+    overflow: hidden;
+  }
+
+  /* Скролл-лента (UL) */
   &__slider-list {
     --sliderItemMinWidth: 606px;
-
-    display: flex;
-    column-gap: 50px;
-    scroll-snap-type: x mandatory;
-    overflow-x: scroll;
+    list-style: none;
+    margin: 0;
     padding-block: 40px;
-    margin-left: calc(var(--sliderItemMinWidth) / 2 * -1);
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    padding-inline: 0;
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    /* Keen-Slider сам сделает display: flex для .keen-slider__wrapper */
 
     @include tablet {
       --sliderItemMinWidth: 330px;
-
-      column-gap: 30px;
-      margin-left: 0;
     }
   }
+
+  /* Слайд (LI) */
   &__slider-item {
-    scroll-snap-align: start;
+    min-width: var(--sliderItemMinWidth) !important;
+    max-width: var(--sliderItemMinWidth) !important;
+    box-sizing: border-box;
+
+    /* УБИРАЕМ КРИТИЧЕСКУЮ ОШИБКУ: на самом LI не должно быть переходов transition для transform! */
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
+} // Конец класса .testimonials
+
+/* Магия Swiper: он автоматически вешает класс .swiper-slide-active на центральный слайд */
+.swiper-slide-active {
+  opacity: 1 !important;
+  transform: scale(1) !important;
 }
 
 .testimonials-card {
   display: flex;
   flex-direction: column;
   row-gap: 50px;
+
+  /* Эффект прозрачности и уменьшения для неактивных слайдов */
+  opacity: 0.4;
+  transform: scale(0.95);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+
   &__body {
-    min-width: var(--sliderItemMinWidth);
+    width: 100%; /* Занимает всю ширину LI */
     border: 1px solid var(--color-accent);
     border-radius: 45px;
     color: var(--color-light);
@@ -89,16 +117,19 @@
       border: inherit;
       position: absolute;
       rotate: 45deg;
+
+      /* ИСПРАВЛЕНИЕ: прижимаем ромб ровно по линии низа */
       top: 100%;
-      translate: 0 -51%;
+
+      /* Сдвигаем ромб вверх на 25px (половина его высоты), чтобы центр встал на линию, */
+      /* и добавляем 1.5px нахлёста вверх (итого -26.5px), чтобы намертво перекрыть шов */
+      translate: 0 -26.5px;
+
       clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
 
       @include mobile {
         left: 50px;
       }
-    }
-    @include mobile {
-      padding: 30px;
     }
   }
   &__info {
@@ -114,6 +145,11 @@
     color: var(--color-accent);
     font-size: 20px;
   }
+}
+
+.testimonials__slider-item.is-current .testimonials-card {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .pagination {
@@ -169,4 +205,12 @@
       cursor: not-allowed;
     }
   }
+}
+
+.keen-slider__wrapper {
+  display: flex !important;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
 }

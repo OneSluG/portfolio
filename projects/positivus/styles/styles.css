@@ -94,30 +94,30 @@ button {
 
 html {
   /**
-     Пригодится в большинстве ситуаций
-     (когда, например, нужно будет "прижать" футер к низу сайта)
-    */
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
   height: 100%;
   /**
-     Убираем скачок интерфейса по горизонтали
-     при появлении / исчезновении скроллбара
-    */
+    Убираем скачок интерфейса по горизонтали
+    при появлении / исчезновении скроллбара
+   */
   scrollbar-gutter: stable;
   /**
-     Плавный скролл
-    */
+    Плавный скролл
+   */
   scroll-behavior: smooth;
 }
 
 body {
   /**
-     Пригодится в большинстве ситуаций
-     (когда, например, нужно будет "прижать" футер к низу сайта)
-    */
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
   min-height: 100%;
   /**
-     Унифицированный интерлиньяж
-    */
+    Унифицированный интерлиньяж
+   */
   line-height: 1.5;
 }
 
@@ -148,7 +148,7 @@ button {
   (за исключением тех, у которых уже указан
   атрибут fill со значением 'none' или начинается с 'url')
  */
-:where([fill]:not([fill="none"], [fill^="url"])) {
+:where([fill]:not([fill=none], [fill^=url])) {
   fill: currentColor;
 }
 
@@ -157,7 +157,7 @@ button {
   (за исключением тех, у которых уже указан
   атрибут stroke со значением 'none')
  */
-:where([stroke]:not([stroke="none"], [stroke^="url"])) {
+:where([stroke]:not([stroke=none], [stroke^=url])) {
   stroke: currentColor;
 }
 
@@ -229,15 +229,56 @@ svg * [stroke] {
   --button-height: 68px;
   --transition-duration: 0.2s;
 }
-@media (max-width: 1023px) {
-  :root {
-    --section-padding-y: 60px;
-  }
-}
 @media (max-width: 767px) {
   :root {
     --section-padding-y: 50px;
   }
+}
+
+body {
+  font-size: clamp(16px, 1.25vw, 18px);
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: 1.28;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  overflow-x: hidden;
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 {
+  font-size: clamp(43px, 4.1666666667vw, 60px);
+}
+
+h2 {
+  font-size: clamp(36px, 2.7777777778vw, 40px);
+}
+
+h3 {
+  font-size: clamp(26px, 2.0833333333vw, 30px);
+}
+
+h4 {
+  font-size: clamp(18px, 1.3888888889vw, 20px);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
 }
 
 .visually-hidden {
@@ -291,52 +332,6 @@ svg * [stroke] {
   background-color: var(--color-gray);
 }
 
-body {
-  font-size: clamp(16px, 1.25vw, 18px);
-  font-family: var(--font-family-base);
-  font-weight: 400;
-  line-height: 1.28;
-  color: var(--color-dark);
-  background-color: var(--color-light);
-  overflow-x: hidden;
-}
-
-a,
-button,
-input,
-textarea,
-svg * {
-  transition-duration: var(--transition-duration);
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-h1 {
-  font-size: clamp(43px, 4.1666666667vw, 60px);
-}
-
-h2 {
-  font-size: clamp(36px, 2.7777777778vw, 40px);
-}
-
-h3 {
-  font-size: clamp(26px, 2.0833333333vw, 30px);
-}
-
-h4 {
-  font-size: clamp(18px, 1.3888888889vw, 20px);
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-weight: 500;
-}
-
 .button {
   display: inline-flex;
   justify-content: center;
@@ -380,9 +375,7 @@ h4 {
   height: 2px;
   background-color: var(--color-dark);
   border-radius: 14px;
-  box-shadow:
-    0 -8px,
-    0 8px;
+  box-shadow: 0 -8px, 0 8px;
 }
 
 .cross-button {
@@ -397,8 +390,7 @@ h4 {
 .cross-button:hover {
   background-color: var(--color-accent);
 }
-.cross-button::before,
-.cross-button::after {
+.cross-button::before, .cross-button::after {
   content: "";
   position: absolute;
   left: 8px;
@@ -457,12 +449,12 @@ h4 {
   justify-content: space-between;
   align-items: center;
   -moz-column-gap: 40px;
-  column-gap: 40px;
+       column-gap: 40px;
 }
 @media (max-width: 1280px) {
   .header__wrapper {
     -moz-column-gap: 20px;
-    column-gap: 20px;
+         column-gap: 20px;
   }
 }
 @media (max-width: 1023px) {
@@ -493,12 +485,12 @@ h4 {
   display: flex;
   align-items: center;
   -moz-column-gap: 40px;
-  column-gap: 40px;
+       column-gap: 40px;
 }
 @media (max-width: 1280px) {
   .header__menu-list {
     -moz-column-gap: 20px;
-    column-gap: 20px;
+         column-gap: 20px;
   }
 }
 .header__menu-link {
@@ -606,7 +598,7 @@ h4 {
     width: calc(100vw + 120px);
     margin-left: -80px;
     -moz-column-gap: 0;
-    column-gap: 0;
+         column-gap: 0;
     grid-template-columns: repeat(3, 220px);
   }
 }
@@ -618,7 +610,7 @@ h4 {
   .hero__partners-item {
     justify-content: start;
   }
-  .hero__partners-item:nth-child(-n + 3) {
+  .hero__partners-item:nth-child(-n+3) {
     justify-content: end;
   }
 }
@@ -632,7 +624,7 @@ h4 {
 .services__header {
   display: flex;
   -moz-column-gap: 40px;
-  column-gap: 40px;
+       column-gap: 40px;
   align-items: center;
   margin-bottom: 80px;
 }
@@ -727,7 +719,7 @@ h4 {
   display: flex;
   justify-content: space-between;
   -moz-column-gap: 30px;
-  column-gap: 30px;
+       column-gap: 30px;
   padding: 50px;
   box-shadow: 0 5px 0 0 var(--color-dark);
   border: var(--border);
@@ -799,7 +791,7 @@ h4 {
   font-size: 20px;
   align-items: center;
   -moz-column-gap: 15px;
-  column-gap: 15px;
+       column-gap: 15px;
   align-self: start;
 }
 @media (max-width: 767px) {
@@ -883,12 +875,12 @@ h4 {
 .cases__list {
   display: flex;
   -moz-column-gap: 64px;
-  column-gap: 64px;
+       column-gap: 64px;
 }
 @media (max-width: 1023px) {
   .cases__list {
     -moz-column-gap: 30px;
-    column-gap: 30px;
+         column-gap: 30px;
   }
 }
 @media (max-width: 767px) {
@@ -896,7 +888,7 @@ h4 {
     scroll-snap-type: x mandatory;
     overflow-x: scroll;
     -moz-column-gap: 20px;
-    column-gap: 20px;
+         column-gap: 20px;
     width: 100vw;
   }
 }
@@ -938,7 +930,7 @@ h4 {
   align-self: flex-start;
   line-height: 1.2;
   -moz-column-gap: 15px;
-  column-gap: 15px;
+       column-gap: 15px;
 }
 .cases__item-link:hover {
   color: var(--color-accent);
@@ -1016,9 +1008,7 @@ h4 {
   padding-top: 30px;
   border-top: 1px solid var(--color-dark);
 }
-.accordion.is-current,
-.accordion:hover,
-.accordion[open] {
+.accordion.is-current, .accordion:hover, .accordion[open] {
   background-color: var(--color-accent);
 }
 .accordion__header {
@@ -1043,8 +1033,7 @@ h4 {
   position: relative;
   flex-shrink: 0;
 }
-.accordion__indicator::before,
-.accordion__indicator::after {
+.accordion__indicator::before, .accordion__indicator::after {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1135,7 +1124,7 @@ h4 {
 .team-card__header {
   display: flex;
   -moz-column-gap: 20px;
-  column-gap: 20px;
+       column-gap: 20px;
 }
 .team-card__info {
   display: flex;
@@ -1179,6 +1168,7 @@ h4 {
 
 .testimonials {
   padding-block: 70px;
+  color: #000;
 }
 .testimonials__header {
   display: flex;
@@ -1209,48 +1199,71 @@ h4 {
   background-color: var(--color-dark);
   border-radius: 45px;
   padding: 66px 0 80px 0;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 @media (max-width: 1023px) {
   .testimonials__content {
-    padding: 30px 30px 44px 30px;
+    padding: 30px 0px 44px 0px;
     row-gap: 44px;
   }
 }
+.testimonials {
+  /* Контейнер-обертка */
+  /* Контейнер-обертка (ДОБАВИЛИ СЮДА СЕЛЕКТОР &__slider) */
+}
+.testimonials__slider {
+  width: 100%;
+  position: relative;
+  /* Дополнительная защита на случай, если родной CSS не успел подгрузиться */
+  display: flex;
+  overflow: hidden;
+}
+.testimonials {
+  /* Скролл-лента (UL) */
+}
 .testimonials__slider-list {
   --sliderItemMinWidth: 606px;
-  display: flex;
-  -moz-column-gap: 50px;
-  column-gap: 50px;
-  scroll-snap-type: x mandatory;
-  overflow-x: scroll;
+  list-style: none;
+  margin: 0;
   padding-block: 40px;
-  margin-left: calc(var(--sliderItemMinWidth) / 2 * -1);
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.testimonials__slider-list::-webkit-scrollbar {
-  display: none;
+  padding-inline: 0;
+  /* Keen-Slider сам сделает display: flex для .keen-slider__wrapper */
 }
 @media (max-width: 1023px) {
   .testimonials__slider-list {
     --sliderItemMinWidth: 330px;
-    -moz-column-gap: 30px;
-    column-gap: 30px;
-    margin-left: 0;
   }
 }
+.testimonials {
+  /* Слайд (LI) */
+}
 .testimonials__slider-item {
-  scroll-snap-align: start;
+  min-width: var(--sliderItemMinWidth) !important;
+  max-width: var(--sliderItemMinWidth) !important;
+  box-sizing: border-box;
+  /* УБИРАЕМ КРИТИЧЕСКУЮ ОШИБКУ: на самом LI не должно быть переходов transition для transform! */
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* Магия Swiper: он автоматически вешает класс .swiper-slide-active на центральный слайд */
+.swiper-slide-active {
+  opacity: 1 !important;
+  transform: scale(1) !important;
 }
 
 .testimonials-card {
   display: flex;
   flex-direction: column;
   row-gap: 50px;
+  /* Эффект прозрачности и уменьшения для неактивных слайдов */
+  opacity: 0.4;
+  transform: scale(0.95);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 .testimonials-card__body {
-  min-width: var(--sliderItemMinWidth);
+  width: 100%; /* Занимает всю ширину LI */
   border: 1px solid var(--color-accent);
   border-radius: 45px;
   color: var(--color-light);
@@ -1266,8 +1279,11 @@ h4 {
   border: inherit;
   position: absolute;
   rotate: 45deg;
+  /* ИСПРАВЛЕНИЕ: прижимаем ромб ровно по линии низа */
   top: 100%;
-  translate: 0 -51%;
+  /* Сдвигаем ромб вверх на 25px (половина его высоты), чтобы центр встал на линию, */
+  /* и добавляем 1.5px нахлёста вверх (итого -26.5px), чтобы намертво перекрыть шов */
+  translate: 0 -26.5px;
   clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
 }
 @media (max-width: 767px) {
@@ -1275,16 +1291,10 @@ h4 {
     left: 50px;
   }
 }
-@media (max-width: 767px) {
-  .testimonials-card__body {
-    padding: 30px;
-  }
-}
 .testimonials-card__info {
   margin-left: 60px;
 }
-.testimonials-card__name,
-.testimonials-card__post {
+.testimonials-card__name, .testimonials-card__post {
   color: var(--color-light);
   font-style: normal;
   display: block;
@@ -1294,6 +1304,11 @@ h4 {
   font-size: 20px;
 }
 
+.testimonials__slider-item.is-current .testimonials-card {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .pagination {
   display: flex;
   justify-content: space-between;
@@ -1301,7 +1316,7 @@ h4 {
   width: 564px;
   margin-inline: auto;
   -moz-column-gap: 20px;
-  column-gap: 20px;
+       column-gap: 20px;
 }
 @media (max-width: 767px) {
   .pagination {
@@ -1315,7 +1330,7 @@ h4 {
 .pagination__bullets-list {
   display: flex;
   -moz-column-gap: 10px;
-  column-gap: 10px;
+       column-gap: 10px;
 }
 .pagination__bullets-item.is-current {
   color: var(--color-accent);
@@ -1331,26 +1346,30 @@ h4 {
   width: 48px;
   aspect-ratio: 1;
 }
-.pagination__arrow-button,
-.pagination__bullets-button {
+.pagination__arrow-button, .pagination__bullets-button {
   padding: 0;
   background-color: transparent;
   border: none;
   color: var(--color-light);
   transition-duration: var(--transition-duration);
 }
-.pagination__arrow-button:hover,
-.pagination__bullets-button:hover {
+.pagination__arrow-button:hover, .pagination__bullets-button:hover {
   color: var(--color-accent);
 }
-.pagination__arrow-button.is-current,
-.pagination__bullets-button.is-current {
+.pagination__arrow-button.is-current, .pagination__bullets-button.is-current {
   color: var(--color-accent);
 }
-.pagination__arrow-button[disabled],
-.pagination__bullets-button[disabled] {
+.pagination__arrow-button[disabled], .pagination__bullets-button[disabled] {
   color: var(--color-gray-alt);
   cursor: not-allowed;
+}
+
+.keen-slider__wrapper {
+  display: flex !important;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
 }
 
 .contact-us {
@@ -1421,20 +1440,20 @@ h4 {
 .contact-us__request-types {
   display: flex;
   -moz-column-gap: 35px;
-  column-gap: 35px;
+       column-gap: 35px;
 }
 
 .radios__item {
   display: flex;
   align-items: center;
   -moz-column-gap: 14px;
-  column-gap: 14px;
+       column-gap: 14px;
 }
 
 .radio {
   -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   transition-duration: var(--transition-duration);
 }
 .radio:hover {
@@ -1460,11 +1479,18 @@ h4 {
   content: "";
   background-color: var(--color-accent);
   border-radius: 50%;
-  transition: all var(--transition-duration) ease;
-  transform: scale(0);
+  transition: scale var(--transition-duration) ease;
+  scale: 0;
+}
+.radio__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rectangle(0 0 0 0);
 }
 .radio__input:checked + .radio__emulator::after {
-  transform: scale(1);
+  scale: 1;
 }
 .radio__input:focus-visible + .radio__emulator {
   box-shadow: 0 0 0 3px var(--color-accent);
@@ -1487,8 +1513,7 @@ h4 {
   outline: none;
   resize: none;
 }
-.field__input:hover,
-.field__input:focus {
+.field__input:hover, .field__input:focus {
   border: 1px solid var(--color-accent);
 }
 .field__input--text-area {
@@ -1541,7 +1566,7 @@ h4 {
 .footer__menu-list {
   display: flex;
   -moz-column-gap: 40px;
-  column-gap: 40px;
+       column-gap: 40px;
 }
 @media (max-width: 1023px) {
   .footer__menu-list {
@@ -1574,7 +1599,7 @@ h4 {
 .footer__soc1als {
   display: flex;
   -moz-column-gap: 20px;
-  column-gap: 20px;
+       column-gap: 20px;
 }
 @media (max-width: 767px) {
   .footer__soc1als {
@@ -1632,7 +1657,7 @@ h4 {
 .footer__extra {
   display: flex;
   -moz-column-gap: 40px;
-  column-gap: 40px;
+       column-gap: 40px;
   padding-block: 50px;
   margin-top: 50px;
   border-top: 1px solid var(--color-light);
@@ -1658,7 +1683,7 @@ h4 {
   background-color: var(--color-dark-alt);
   border-radius: 14px;
   -moz-column-gap: 20px;
-  column-gap: 20px;
+       column-gap: 20px;
 }
 @media (max-width: 1023px) {
   .footer-form {
@@ -1676,8 +1701,7 @@ h4 {
   padding-inline: 35px;
   outline: none;
 }
-.footer-form__input:focus,
-.footer-form__input:hover {
+.footer-form__input:focus, .footer-form__input:hover {
   border-color: var(--color-accent);
 }
 .footer-form__button {
@@ -1704,9 +1728,7 @@ h4 {
   font-weight: 500;
   opacity: 0;
   visibility: hidden;
-  transition:
-    opacity var(--transition-duration) ease,
-    visibility var(--transition-duration) ease;
+  transition: opacity var(--transition-duration) ease, visibility var(--transition-duration) ease;
 }
 @media (max-width: 1023px) {
   .footer-form__message {
@@ -1742,9 +1764,7 @@ h4 {
   /* Плавное скрытие */
   opacity: 0;
   visibility: hidden;
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
   /* Темный полупрозрачный фон */
 }
 .modal__overlay {
@@ -1833,4 +1853,4 @@ h4 {
 }
 .modal.is-open .modal__content {
   transform: translateY(0); /* Окошко плавно встает на место */
-} /*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */

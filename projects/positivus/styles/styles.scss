@@ -1,2 +1,18 @@
-@import "normalize", "fonts", "media", "mixins", "variables", "utils", "globals";
-@import "blocks/button", "blocks/burger-button", "blocks/mobile-overlay", "blocks/header", "blocks/hero", "blocks/services", "blocks/cases", "blocks/process", "blocks/team", "blocks/testimonials", "blocks/contact-us", "blocks/footer";
+@use "normalize";
+@use "fonts";
+@use "config";
+@use "globals";
+@use "utils";
+
+@use "blocks/button";
+@use "blocks/burger-button";
+@use "blocks/mobile-overlay";
+@use "blocks/header";
+@use "blocks/hero";
+@use "blocks/services";
+@use "blocks/cases";
+@use "blocks/process";
+@use "blocks/team";
+@use "blocks/testimonials";
+@use "blocks/contact-us";
+@use "blocks/footer";
