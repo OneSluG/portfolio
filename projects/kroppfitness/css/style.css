@@ -1011,6 +1011,8 @@ a:hover {
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 400;
+  display: flex;
+  align-items: center;
 }
 
 .footer-body {
@@ -1066,9 +1068,26 @@ a:hover {
 }
 .socia1s-link {
   color: var(--color-light);
-  width: 21px;
+  width: 31px;
   height: auto;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border 0.3s ease-in-out;
+  padding: 5px;
 }
+.socia1s-link:hover {
+  border: 1px solid var(--color-light);
+  border-radius: 5px;
+}
+
+.socia1s-link:hover {
+  border: 1px solid var(--color-light);
+  border-radius: 5px;
+}
+
 .arrow-after {
   position: relative;
 }
@@ -1185,9 +1204,11 @@ a:hover {
     column-gap: 14px;
   }
   .crossfit {
-    min-height: calc(100vh - 92px);
+    min-height: calc(50vh - 92px);
+    padding-bottom: 20px;
   }
   .crossfit-info {
+    font-size: 20px;
     margin-bottom: 5px;
   }
   .motivation-card {
@@ -1279,10 +1300,34 @@ a:hover {
 }
 @media (max-width: 498px) {
   .crossfit {
-    min-height: calc(100vh - 124px);
+    min-height: calc(50vh - 124px);
   }
   .header-menu {
     display: none;
+  }
+  .family-title::before {
+    left: 0px;
+    top: -10px;
+  }
+
+  .calculate-form-wrapper {
+    align-items: normal;
+    text-align: center;
+  }
+
+  .calculate-button {
+    align-self: center;
+  }
+
+  .calculate-title {
+    font-size: 30px;
+  }
+
+  .calculate-title::after {
+    left: 25%;
+  }
+  .calculate-title::before {
+    left: 20px;
   }
 }
 

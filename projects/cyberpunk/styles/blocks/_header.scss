@@ -33,9 +33,23 @@
   &__soc1als-list {
     display: flex;
     column-gap: 40px;
+
+    @include mobile {
+      column-gap: 20px;
+    }
   }
 
   &__soc1als-link {
+    opacity: 0.8;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+      transform: translateY(-4px);
+    }
+
     @include flex-center;
     width: 30px;
     height: 30px;

@@ -55,10 +55,8 @@
     font-size: 18px;
   }
 
-  &[open] {
-    .accordion__indicator::after {
-      rotate: 0deg;
-    }
+  &[open] .accordion__indicator::after {
+    rotate: 0deg;
   }
 
   &__title {

@@ -165,46 +165,49 @@
             </div>
           </div>
 
-          <div class="play__content">
-            <form class="play__form form" action="sendmail.php" method="post" enctype="multipart/form-data">
-              <input class="form__input" type="text" name="name" placeholder="Как тебя зовут?" />
-              <input class="form__input" type="email" name="email" placeholder="Твой e-mail" />
+          <form class="play__form form" action="sendmail.php" method="post" enctype="multipart/form-data">
+            <input class="form__input" type="text" name="name" placeholder="Как тебя зовут?" />
+            <input class="form__input" type="email" name="email" placeholder="Твой e-mail" />
 
-              <div class="file-upload">
-                <!-- 1. Скрытый инпут теперь имеет id -->
-                <input type="file" id="screenshot-upload" name="screenshot" class="file-upload__input" accept="image/*" />
+            <div class="file-upload">
+              <!-- 1. Скрытый инпут теперь имеет id -->
+              <input type="file" id="screenshot-upload" name="screenshot" class="file-upload__input" accept="image/*" />
 
-                <!-- 2. Лейбл связан с инпутом через for и содержит только визуальную кнопку загрузки -->
-                <label for="screenshot-upload" class="file-upload__label">
-                  <span class="file-upload__design">
-                    <span class="file-upload__icon">📁</span>
-                    <span class="file-upload__text">Прикрепить скриншот</span>
-                  </span>
-                </label>
-
-                <!-- 3. Блок превью и кнопка удаления вынесены ИЗ лейбла. Теперь они могут быть div и button -->
-                <div class="file-upload__preview">
-                  <!-- Используем заглушку Base64, чтобы не было ошибки пустого src -->
-                  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Превью" class="file-upload__img" />
-                  <button type="button" class="file-upload__remove-btn">&times;</button>
-                </div>
-              </div>
-
-              <button class="form__button button-alt" type="submit">Отправить</button>
-              <label class="form__checkbox-label">
-                <input class="form__checkbox" type="checkbox" name="agree" required />
-                <span class="form__checkbox-icon"></span>
-                <span class="form__checkbox-text">Согласен на обработку данных</span>
+              <!-- 2. Лейбл связан с инпутом через for и содержит только визуальную кнопку загрузки -->
+              <label for="screenshot-upload" class="file-upload__label">
+                <span class="file-upload__design">
+                  <span class="file-upload__icon">📁</span>
+                  <span class="file-upload__text">Прикрепить скриншот</span>
+                </span>
               </label>
-            </form>
-            <div class="play__images-wrapper">
-              <img class="play__big-consoles" src="./img/consoles.png" alt="Игровые консоли" width="788" height="456" loading="lazy" />
-              <div class="play__images-double">
-                <img class="play__small-consoles" src="./img/console1.png" alt="Игровые консоли" width="788" height="456" loading="lazy" />
-                <img class="play__small-consoles" src="./img/console2.png" alt="Игровые консоли" width="788" height="456" loading="lazy" />
+
+              <!-- 3. Блок превью и кнопка удаления вынесены ИЗ лейбла. Теперь они могут быть div и button -->
+              <div class="file-upload__preview">
+                <!-- Используем заглушку Base64, чтобы не было ошибки пустого src -->
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Превью" class="file-upload__img" />
+                <button type="button" class="file-upload__remove-btn">&times;</button>
               </div>
             </div>
+
+            <button class="form__button button-alt" type="submit">Отправить</button>
+            <label class="form__checkbox-label">
+              <input class="form__checkbox" type="checkbox" name="agree" required />
+              <span class="form__checkbox-icon"></span>
+              <span class="form__checkbox-text">Согласен на обработку данных</span>
+            </label>
+          </form>
+
+          <div class="play__images-wrapper">
+            <img class="play__big-consoles" src="./img/consoles.png" alt="Игровые консоли" width="100" height="100" loading="lazy" />
+            <div class="play__images-double">
+              <img class="play__small-consoles" src="./img/console1.png" alt="Игровые консоли" width="100" height="100" loading="lazy" />
+              <img class="play__small-consoles" src="./img/console2.png" alt="Игровые консоли" width="100" height="100" loading="lazy" />
+            </div>
           </div>
+          <!-- 
+          <div class="play__content">
+            
+          </div> -->
         </div>
         <div class="play__bottom-line"></div>
       </section>

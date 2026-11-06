@@ -12,7 +12,6 @@
   &__image-bg {
     grid-column: 1 / 2;
     width: 100%; /* Родитель гибкий и сжимается вместе с экраном */
-    max-width: 960px;
     height: 100%;
     overflow: hidden;
 
@@ -39,7 +38,7 @@
 
     @include mobile {
       grid-column: 1 / 2;
-      min-width: 380px;
+      min-width: 300px;
       padding: 40px 12px;
     }
 
