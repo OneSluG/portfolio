@@ -8,19 +8,77 @@
     <link rel="preconnect" href="https://googleapis.com" />
     <link rel="preconnect" href="https://gstatic.com" crossorigin />
     <link rel="icon" type="image/x-icon" href="/portfolio/favicon.ico" />
-    <script type="module" crossorigin src="/portfolio/assets/js/main-B9W_slHl.js"></script>
+    <script type="module" crossorigin src="/portfolio/assets/js/main-CiW9gTd5.js"></script>
     <link rel="modulepreload" crossorigin href="/portfolio/assets/js/modulepreload-polyfill-DQevEmWy.js">
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/css/main-Baixgwzd.css">
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/css/main-DeldWfMb.css">
   </head>
   <body>
     <!-- Шапка сайта -->
     <header class="header">
-      <div class="container">
-        <div class="logo">
-          OneSluG
-          <span>.dev</span>
+      <div class="container header__wrapper">
+        <div class="header__logo">
+          <img src="/portfolio/img/Logo.svg" class="logo-img logo-img--dark" alt="OneSluG .dev" loading="lazy" />
+          <img src="/portfolio/img/Logo-white.svg" class="logo-img logo-img--light" alt="OneSluG .dev" loading="lazy" />
         </div>
         <p class="subtitle">Фронтенд-разработчик & Специалист по вёрстке</p>
+        <!-- Блок actions > -->
+        <div class="header__actions">
+          <!-- Индикатор занятости -->
+          <div class="status-indicator">
+            <span class="status-indicator__dot"></span>
+            <span class="status-indicator__text">Доступен для заказов</span>
+          </div>
+          <!-- Ссылки на социальные сети  -->
+          <div class="header__socials">
+            <!-- Ссылка на GitHub -->
+            <a href="https://github.com/OneSluG" class="header__social-link" target="_blank" rel="noopener noreferrer" aria-label="Профиль GitHub">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                ></path>
+              </svg>
+            </a>
+
+            <!-- Ссылка на Telegram -->
+            <a href="#" class="header__social-link" target="_blank" rel="noopener noreferrer" aria-label="Чат в Telegram">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </a>
+
+            <!-- Ссылка на Max -->
+            <a href="#" class="header__social-link" target="_blank" rel="noopener noreferrer" aria-label="Чат Messenger MAX">
+              <!-- Теперь иконка имеет идеальный viewBox 0 0 20 20 и класс social-icon без костылей! -->
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10.2149 19.9429C8.25211 19.9429 7.33999 19.6551 5.75453 18.504C4.75166 19.799 1.57594 20.8111 1.43743 19.0796C1.43743 17.7798 1.1509 16.6815 0.826161 15.4824C0.439353 14.0051 0 12.36 0 9.97627C0 4.28308 4.65138 0 10.1623 0C15.6781 0 19.9999 4.49411 19.9999 10.029C20.0184 15.4783 15.6406 19.9139 10.2149 19.9429ZM10.2961 4.92097C7.61221 4.78189 5.52051 6.64765 5.05729 9.57338C4.67525 11.9955 5.35338 14.9452 5.93121 15.0987C6.20819 15.1658 6.90543 14.5999 7.33999 14.1634C8.05859 14.662 8.89538 14.9614 9.76598 15.0315C12.5469 15.1659 14.9231 13.0396 15.1098 10.2497C15.2185 7.45383 13.0773 5.08578 10.2961 4.92578V4.92097Z"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Кнопка переключения темы -->
+          <button type="button" class="theme-switch" id="themeToggle" aria-label="Переключить тему" aria-pressed="false">
+            <span class="theme-switch__track">
+              <span class="theme-switch__marker">
+                <!-- Иконка луны (для светлой темы) -->
+                <svg class="theme-switch__icon theme-switch__icon--moon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.3 22h-.1c-5.5 0-10-4.5-10-10S6.7 2 12.2 2c.5 0 .9.3 1 .8s-.1.9-.6 1.2c-2.9 1.6-4.5 4.7-4.1 8 0.4 3.7 3.5 6.7 7.2 7.1 1.2 0.1 2.4-.2 3.4-.9 0.4-.3.9-.3 1.2 0.1s.3.9 0 1.3C18.6 20.8 15.6 22 12.3 22z" />
+                </svg>
+                <!-- Иконка солнца (для темной темы) -->
+                <svg class="theme-switch__icon theme-switch__icon--sun" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 6.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm0-6a1 1 0 0 1 1 1v1.5a1 1 0 0 1-2 0V3.5a1 1 0 0 1 1-1zm0 15.5a1 1 0 0 1 1 1V20.5a1 1 0 0 1-2 0V19.5a1 1 0 0 1 1-1zM4.22 4.22a1 1 0 0 1 1.42 0l1.06 1.06a1 1 0 1 1-1.42 1.42L4.22 5.64a1 1 0 0 1 0-1.42zm13.08 13.08a1 1 0 0 1 1.42 0l1.06 1.06a1 1 0 1 1-1.42 1.42l-1.06-1.06a1 1 0 0 1 0-1.42zM2 12a1 1 0 0 1 1-1h1.5a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1zm16.5 0a1 1 0 0 1 1-1H21a1 1 0 0 1 0 2h-1.5a1 1 0 0 1-1-1zM5.64 18.36a1 1 0 0 1 0 1.42l-1.06 1.06a1 1 0 1 1-1.42-1.42l1.06-1.06a1 1 0 0 1 1.42 0zm13.08-13.08a1 1 0 0 1 0 1.42l-1.06 1.06a1 1 0 1 1-1.42-1.42l1.06-1.06a1 1 0 0 1 1.42 0z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </button>
+        </div>
       </div>
     </header>
 
