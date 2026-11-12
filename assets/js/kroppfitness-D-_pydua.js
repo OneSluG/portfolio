@@ -1,5 +1,4 @@
-import "./modulepreload-polyfill-DQevEmWy.js";
-
+import "./modulepreload-polyfill-BsPm7yBB.js";
 //#region projects/kroppfitness/js/scripts.js
 document.addEventListener("DOMContentLoaded", () => {
 	const burgerBtn = document.querySelector(".burger-button");
@@ -23,5 +22,4 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 });
-
 //#endregion

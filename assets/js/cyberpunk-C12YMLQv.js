@@ -1,5 +1,4 @@
-import "./modulepreload-polyfill-DQevEmWy.js";
-
+import "./modulepreload-polyfill-BsPm7yBB.js";
 //#region projects/cyberpunk/js/scripts.js
 document.addEventListener("DOMContentLoaded", () => {
 	const dropZone = document.querySelector(".file-upload__label");
@@ -100,5 +99,4 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 });
-
 //#endregion

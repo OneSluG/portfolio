@@ -1,5 +1,4 @@
-import "./modulepreload-polyfill-DQevEmWy.js";
-
+import "./modulepreload-polyfill-BsPm7yBB.js";
 //#region src/js/main.js
 document.addEventListener("DOMContentLoaded", () => {
 	const themeToggleBtn = document.getElementById("themeToggle");
@@ -10,5 +9,4 @@ document.addEventListener("DOMContentLoaded", () => {
 		else localStorage.setItem("theme", "light");
 	});
 });
-
 //#endregion

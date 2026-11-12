@@ -1,5 +1,4 @@
-import "./modulepreload-polyfill-DQevEmWy.js";
-
+import "./modulepreload-polyfill-BsPm7yBB.js";
 //#region \0rolldown/runtime.js
 var __esmMin = (fn, res, err) => () => {
 	if (err) throw err[0];
@@ -10,15 +9,12 @@ var __esmMin = (fn, res, err) => () => {
 	}
 };
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod, mod.exports), cb = null), mod.exports);
-
 //#endregion
 //#region projects/positivus/styles/styles.css
 var init_styles = __esmMin((() => {}));
-
 //#endregion
 //#region projects/positivus/styles/keen-slider.css
 var init_keen_slider = __esmMin((() => {}));
-
 //#endregion
 //#region projects/positivus/js/scripts.js
 var require_scripts = /* @__PURE__ */ __commonJSMin((() => {
@@ -85,7 +81,6 @@ var require_scripts = /* @__PURE__ */ __commonJSMin((() => {
 		});
 	});
 }));
-
 //#endregion
 //#region projects/positivus/node_modules/keen-slider/keen-slider.es.js
 function t(n, t, i) {
@@ -747,11 +742,9 @@ var init_keen_slider_es = __esmMin((() => {
 		}
 	};
 }));
-
 //#endregion
 //#region projects/positivus/node_modules/keen-slider/keen-slider.min.css
 var init_keen_slider_min = __esmMin((() => {}));
-
 //#endregion
 //#region projects/positivus/js/testimonials-slider.js
 var require_testimonials_slider = /* @__PURE__ */ __commonJSMin((() => {
@@ -797,10 +790,6 @@ var require_testimonials_slider = /* @__PURE__ */ __commonJSMin((() => {
 		});
 	});
 }));
-
-//#endregion
-//#region projects/positivus/index.html
-var import_scripts = require_scripts();
-var import_testimonials_slider = require_testimonials_slider();
-
+require_scripts();
+require_testimonials_slider();
 //#endregion

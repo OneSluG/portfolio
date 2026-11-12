@@ -1,0 +1,1285 @@
+@charset "UTF-8";
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure, fieldset):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Упрощаем работу с изображениями и видео
+ */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Убираем скачок интерфейса по горизонтали
+    при появлении / исчезновении скроллбара
+   */
+  scrollbar-gutter: stable;
+  /**
+    Плавный скролл
+   */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Нормализация высоты элемента ссылки при его инспектировании в DevTools
+ */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+  Курсор-рука при наведении на элемент
+ */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+  Убирает серую подсветку при тапе на мобильных устройствах (iOS/Android)
+ */
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут fill со значением 'none' или начинается с 'url')
+ */
+:where([fill]:not([fill=none], [fill^=url])) {
+  fill: currentColor;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут stroke со значением 'none')
+ */
+:where([stroke]:not([stroke=none], [stroke^=url])) {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+svg * [fill] {
+  fill: currentColor;
+}
+
+svg * [stroke] {
+  stroke: currentColor;
+}
+
+/**
+  Приведение рамок таблиц в классический 'collapse' вид
+ */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("/portfolio/assets/fonts/Roboto-Regular-Cg4deceD.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("/portfolio/assets/fonts/Roboto-Bold-BS5-HyWC.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archangelsk";
+  src: url("/portfolio/assets/fonts/Archangelsk-lgkHre1F.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --container-width: 1280px;
+  --container-padding-x: 35px;
+  --container-max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  --color-yellow: #f8f200;
+  --color-dark: #000000;
+  --color-light: #ffffff;
+  --color-gray: #777777;
+  --color-blue: #52bedc;
+  --transition-duration: 0.2s;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+@media (max-width: 767px) {
+  .container {
+    --container-padding-x: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .visible-mobile {
+    display: none !important;
+  }
+}
+
+.hidden-x {
+  overflow-x: hidden;
+}
+
+.button {
+  font-size: 24px;
+  position: relative;
+  padding: 19px 50px;
+  background-color: var(--color-dark);
+  color: var(--color-yellow);
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .button {
+    padding: 10px 30px;
+    font-size: 20px;
+  }
+}
+.button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%; /* Исходно прячем блик далеко слева от кнопки */
+  width: 50%; /* Ширина световой полосы */
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-45deg);
+}
+.button:hover::after {
+  animation: shine 0.75s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    left: -150%; /* Старт: полностью слева снаружи */
+  }
+  100% {
+    left: 150%; /* Финиш: улетел полностью направо наружу */
+  }
+}
+.button-alt {
+  font-size: 24px;
+  padding: 19px 50px;
+  font-weight: 700;
+  color: var(--color-dark);
+  background-color: var(--color-yellow);
+  transition: background-color 0.2s ease;
+}
+.button-alt:hover {
+  background-color: var(--color-light);
+}
+@media (max-width: 767px) {
+  .button-alt {
+    padding: 10px 30px;
+    font-size: 20px;
+  }
+}
+
+body {
+  font-size: clamp(16px, 1.25vw, 18px);
+  font-family: "roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.9;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  overflow-x: hidden;
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  font-size: 18px;
+}
+@media (max-width: 767px) {
+  p {
+    font-size: 16px;
+  }
+}
+
+h1 {
+  font-size: 62px;
+  font-family: "Archangelsk", sans-serif;
+}
+
+h2 {
+  font-size: 62px;
+  font-family: "Archangelsk", sans-serif;
+  line-height: 1;
+}
+@media (max-width: 767px) {
+  h2 {
+    font-size: 30px;
+  }
+}
+
+h3 {
+  font-size: 24px;
+  font-family: "roboto", sans-serif;
+}
+
+h4 {
+  font-size: 24px;
+  font-family: "roboto", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+}
+
+.header {
+  background: url(/portfolio/assets/img/projects/cyberpunk/header_bg1-DgScdrb1.jpg) no-repeat center/cover;
+}
+.header__wrapper {
+  position: relative;
+  height: 100vh;
+}
+.header__topline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 767px) {
+  .header__topline {
+    flex-direction: column;
+    row-gap: 10px;
+  }
+}
+.header__logo-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 296px;
+  height: 74px;
+  background: url(/portfolio/assets/img/projects/cyberpunk/Cyberpunk_logo1-CJQIZK5-.svg) no-repeat center/cover;
+}
+@media (max-width: 360px) {
+  .header__logo-link {
+    width: 200px;
+    height: 50px;
+  }
+}
+.header__soc1als-list {
+  display: flex;
+  column-gap: 40px;
+}
+@media (max-width: 767px) {
+  .header__soc1als-list {
+    column-gap: 20px;
+  }
+}
+.header__soc1als-link {
+  opacity: 0.8;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.header__soc1als-link:hover {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+.header__soc1als-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+.header__banner {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  background-color: var(--color-yellow);
+  max-width: 624px;
+  position: absolute;
+  bottom: 0;
+  right: var(--container-padding-x);
+  padding: 70px;
+  clip-path: polygon(50px 0%, 100% 0%, 100% calc(100% - 50px), calc(100% - 50px) 100%, 0% 100%, 0% 50px);
+}
+@media (max-width: 767px) {
+  .header__banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    margin-inline: calc(var(--container-padding-x) * -1);
+    font-size: 30px;
+    text-align: center;
+  }
+}
+.header__banner-button {
+  align-self: start;
+}
+@media (max-width: 767px) {
+  .header__banner-button {
+    align-self: center;
+  }
+}
+
+.city__wrapper {
+  padding-block: 70px;
+}
+.city__title {
+  max-width: 1000px;
+  margin-bottom: 25px;
+}
+.city__description {
+  max-width: 950px;
+  margin-bottom: 70px;
+}
+.city__description-link {
+  color: #52bedc;
+}
+.city__description-link:hover {
+  text-decoration: underline;
+}
+.city__images {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 32px;
+}
+.city__images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 767px) {
+  .city__images {
+    margin-inline: calc(var(--container-padding-x) * -1);
+  }
+}
+.city__image-1 {
+  grid-column: 1/4;
+  grid-row: 1;
+}
+@media (max-width: 1023px) {
+  .city__image-1 {
+    grid-row: 1/2;
+    grid-column: 1/5;
+  }
+}
+.city__image-2 {
+  grid-column: 1/4;
+  grid-row: 2;
+}
+@media (max-width: 1023px) {
+  .city__image-2 {
+    grid-row: 1/2;
+    grid-column: 5/9;
+  }
+}
+.city__image-3 {
+  grid-column: 4/9;
+  grid-row: 1/3;
+}
+@media (max-width: 1023px) {
+  .city__image-3 {
+    grid-row: 2/3;
+    grid-column: 1/9;
+  }
+}
+
+.play {
+  background-color: var(--color-dark);
+  position: relative;
+  color: #ffffff;
+}
+.play__wrapper {
+  padding-block: 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 1023px) {
+  .play__wrapper {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 767px) {
+  .play__wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+.play__top-line, .play__bottom-line {
+  height: 70px;
+}
+.play__top-line {
+  background: url(/portfolio/assets/img/projects/cyberpunk/play-topline-bg-CZY3TCSj.png) no-repeat center/cover;
+}
+.play__bottom-line {
+  background: url(/portfolio/assets/img/projects/cyberpunk/play-bottom-line-C3RGDQu1.png) no-repeat center/cover;
+}
+.play__header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  grid-column: 1/3;
+}
+@media (max-width: 1023px) {
+  .play__header {
+    margin-bottom: 0;
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+}
+@media (max-width: 767px) {
+  .play__header {
+    display: flex;
+    margin-bottom: 20px;
+  }
+}
+.play__header-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  column-gap: 32px;
+  margin-bottom: 58px;
+}
+@media (max-width: 1023px) {
+  .play__header-title-wrapper {
+    flex-direction: column;
+    row-gap: 15px;
+    margin-bottom: 25px;
+  }
+}
+@media (max-width: 767px) {
+  .play__header-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    row-gap: 10px;
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .play__header-image {
+    order: -2;
+  }
+}
+.play__header-title {
+  position: relative;
+  padding-block: 15px;
+}
+.play__header-description {
+  max-width: 950px;
+  margin-bottom: 70px;
+  line-height: 2;
+}
+@media (max-width: 1023px) {
+  .play__header-description {
+    margin-bottom: 0;
+  }
+}
+.play__header-link {
+  color: #52bedc;
+}
+.play__header-link:hover {
+  text-decoration: underline;
+}
+.play__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .play__content {
+    grid-template-columns: minmax(320px, 450px) 1fr;
+    gap: clamp(30px, 5vw, 64px);
+  }
+}
+.play__images-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+@media (max-width: 1023px) {
+  .play__images-wrapper {
+    grid-column: 2/3;
+    grid-row: 1/3;
+  }
+}
+@media (max-width: 767px) {
+  .play__images-wrapper {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: flex;
+    width: 100%;
+    margin-bottom: 25px;
+  }
+}
+.play__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  min-width: 296px;
+  flex: 1 1 460px;
+  padding-top: 30px;
+  align-items: start;
+}
+@media (max-width: 1023px) {
+  .play__form {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    padding-top: 0;
+  }
+}
+@media (max-width: 767px) {
+  .play__form {
+    grid-row: auto;
+  }
+}
+@media (max-width: 1023px) {
+  .play__big-consoles {
+    display: none;
+  }
+}
+.play__images-double {
+  display: none;
+  width: 100%;
+}
+@media (max-width: 1023px) {
+  .play__images-double {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+  }
+}
+@media (max-width: 767px) {
+  .play__images-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+}
+.play__big-consoles, .play__small-consoles {
+  width: 100%;
+  max-width: 788px;
+  height: auto;
+  object-fit: cover;
+}
+.play__small-consoles {
+  width: 100%;
+  max-width: 50vw;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 1;
+}
+
+.form__checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+  color: #ffffff;
+}
+.form__checkbox-label:hover .form__checkbox-icon {
+  border-color: #ffffff;
+}
+.form__input {
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--color-gray);
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--color-light);
+  box-sizing: border-box;
+}
+.form__input:focus {
+  border: 1px solid var(--color-gray);
+}
+.form {
+  /* Скрываем дефолтный системный чекбокс, но оставляем его доступным для клавиатуры */
+}
+.form__checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  /* 🪄 МАГИЯ: Когда реальный чекбокс ЗАГОРЕЛСЯ (checked), меняем стиль нашей иконки рядом */
+}
+.form__checkbox:checked + .form__checkbox-icon {
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+  /* Показываем галочку/крестик внутри */
+}
+.form__checkbox:checked + .form__checkbox-icon::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.form__checkbox {
+  /* Поддержка доступности: фокус с клавиатуры (клавиша Tab) */
+}
+.form__checkbox:focus-visible + .form__checkbox-icon {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+.form {
+  /* Наш собственный кастомный квадратик */
+}
+.form__checkbox-icon {
+  position: relative;
+  flex-shrink: 0; /* Запрещаем квадратику сжиматься */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #555555; /* Цвет рамки в спокойном состоянии */
+  background-color: transparent;
+  border-radius: 0px; /* Скругление (уберите или поставьте 0 для острых углов) */
+  transition: all 0.25s ease;
+  /* Рисуем внутренний крестик/галочку с помощью псевдоэлемента */
+}
+.form__checkbox-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  background-color: var(--color-gray); /* Цвет самого крестика */
+  /* Форма крестика/галочки через CSS-маску (очень современный и чистый способ) */
+  clip-path: polygon(28% 53%, 44% 69%, 76% 23%, 87% 31%, 46% 89%, 17% 62%);
+  /* Изначально крестик невидим и уменьшен */
+  opacity: 0;
+}
+.form__checkbox-text {
+  line-height: 1.3;
+  padding-top: 2px;
+}
+
+.file-upload {
+  position: relative;
+  width: 100%;
+  max-width: 460px; /* В цвет вашей формы */
+}
+.file-upload__label {
+  display: block;
+  width: 100%;
+  min-height: 150px;
+  border: 2px dashed var(--color-gray, #555);
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.file-upload {
+  /* Скрываем стандартный некрасивый инпут */
+}
+.file-upload__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.file-upload {
+  /* Дизайн зоны загрузки */
+}
+.file-upload__design {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  text-align: center;
+  gap: 12px;
+}
+.file-upload__icon {
+  font-size: 32px;
+}
+.file-upload__text {
+  font-size: 16px;
+  color: var(--color-light, #fff);
+  line-height: 1.4;
+  text-decoration: underline;
+}
+.file-upload__text strong {
+  color: #00f0ff; /* Ваш кибер-циановый цвет */
+}
+.file-upload {
+  /* Состояние, когда пользователь тащит файл НАД блоком */
+}
+.file-upload__label.is-dragover {
+  border-color: #00f0ff;
+  background-color: rgba(0, 240, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.file-upload {
+  /* Блок превью (изначально скрыт) */
+}
+.file-upload__preview {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.file-upload__preview.is-active {
+  display: block;
+}
+.file-upload__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.file-upload {
+  /* Кнопка удаления картинки */
+}
+.file-upload__remove-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 0, 85, 0.8); /* Розовый кибер-цвет */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.file-upload__remove-btn:hover {
+  background: #ff0055;
+}
+
+.immersion {
+  background-color: var(--color-yellow);
+  color: var(--color-dark);
+}
+.immersion__wrapper {
+  padding-block: 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+@media (max-width: 767px) {
+  .immersion__wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+.immersion__monitor {
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 26px;
+  grid-column: 1;
+}
+.immersion__monitor-logos {
+  display: flex;
+  gap: 25px;
+  max-width: 540px;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 1023px) {
+  .immersion__monitor-logos {
+    flex-direction: column;
+    row-gap: 25px;
+  }
+}
+@media (max-width: 767px) {
+  .immersion__monitor-logos {
+    flex-direction: row;
+    height: 44px;
+  }
+}
+.immersion__monitor-logo--hp {
+  background: url("data:image/svg+xml,%3csvg%20width='80'%20height='80'%20viewBox='0%200%2080%2080'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_14_68)'%3e%3cpath%20d='M40.0007%2080C39.6031%2080%2039.2071%2079.993%2038.8118%2079.9815L46.9866%2057.5152H58.2366C60.2112%2057.5152%2062.3788%2055.9972%2063.0542%2054.1426L71.9227%2029.7822C73.3738%2025.7939%2071.0894%2022.5309%2066.8455%2022.5309H51.2381L38.1433%2058.5154H38.1383L30.7142%2078.9141C13.1014%2074.727%200.000671387%2058.8941%200.000671387%2040C0.000671387%2021.6509%2012.3562%206.18889%2029.2012%201.47667L21.541%2022.5309H21.5388L8.80437%2057.5152L17.2816%2057.5159L28.1112%2027.7881H34.4825L23.6529%2057.5159L32.127%2057.5174L42.2192%2029.7822C43.671%2025.7939%2041.3864%2022.5309%2037.1464%2022.5309H30.0205L38.2025%200.042037C38.7988%200.0155556%2039.3977%200%2040.0003%200C62.0918%200%2080.0003%2017.9085%2080.0003%2040C80.0003%2062.0913%2062.0918%2080%2040.0003%2080H40.0007ZM64.2029%2027.7667H57.8334L48.9136%2052.2404H55.2833L64.2029%2027.7667Z'%20fill='black'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_14_68'%3e%3crect%20width='80'%20height='80'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e") no-repeat center/cover;
+  max-width: 80px;
+  height: 80px;
+  width: 100%;
+  flex-shrink: 0;
+}
+@media (max-width: 767px) {
+  .immersion__monitor-logo--hp {
+    width: 44px;
+    height: 44px;
+  }
+}
+.immersion__monitor-logo--cross {
+  background: url("data:image/svg+xml,%3csvg%20width='91'%20height='21'%20viewBox='0%200%2091%2021'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M90.1639%200.752197L90%200.279833L1.14363e-05%2018.8995L0.163939%2019.3719L0.327867%2019.8442L90.3279%201.22456L90.1639%200.752197Z'%20fill='black'/%3e%3cpath%20d='M90.0577%2019.6536L90.2267%2019.183L0.439419%20-4.55735e-05L0.270446%200.470537L0.101474%200.94112L89.8888%2020.1241L90.0577%2019.6536Z'%20fill='black'/%3e%3c/svg%3e") no-repeat center/cover;
+  max-width: 90px;
+  width: 100%;
+  height: 20px;
+  flex-shrink: 0;
+}
+@media (max-width: 767px) {
+  .immersion__monitor-logo--cross {
+    width: 44px;
+    height: 20px;
+  }
+}
+.immersion__monitor-logo--cyber {
+  background: url("/portfolio/assets/img/projects/cyberpunk/Cyberpunk_logo1-CJQIZK5-.svg") no-repeat center/cover;
+  max-width: 320px;
+  aspect-ratio: 4/1;
+  height: 80px;
+  flex-shrink: 0;
+}
+@media (max-width: 767px) {
+  .immersion__monitor-logo--cyber {
+    width: 175px;
+    height: 44px;
+  }
+}
+.immersion__content {
+  grid-column: 2;
+}
+@media (max-width: 767px) {
+  .immersion__content {
+    grid-column: 1;
+  }
+}
+.immersion__title {
+  margin-bottom: 25px;
+}
+.immersion__description {
+  margin-bottom: 25px;
+}
+.immersion__advantages {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  margin-bottom: 40px;
+}
+.immersion__advantages-item {
+  display: flex;
+  align-items: center;
+}
+.immersion__advantages-item span {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.purchase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 767px) {
+  .purchase {
+    grid-template-columns: 1fr;
+  }
+}
+.purchase__image-bg {
+  grid-column: 1/2;
+  width: 100%; /* Родитель гибкий и сжимается вместе с экраном */
+  height: 100%;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .purchase__image-bg {
+    max-height: 200px;
+  }
+}
+.purchase__image-bg img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: left center;
+}
+.purchase__content {
+  min-width: 692px;
+  grid-column: 2/3;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  padding: 70px 0 70px 32px;
+}
+@media (max-width: 767px) {
+  .purchase__content {
+    grid-column: 1/2;
+    min-width: 300px;
+    padding: 40px 12px;
+  }
+}
+.purchase__content-inner {
+  max-width: calc(var(--container-width) / 2 - 32px);
+}
+.purchase__title {
+  margin-bottom: 25px;
+}
+.purchase__set {
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+@media (max-width: 767px) {
+  .purchase__set {
+    margin-bottom: 40px;
+  }
+}
+.purchase__set-title {
+  color: var(--color-blue);
+}
+.purchase__set-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+.purchase__set-item {
+  display: flex;
+  align-items: center;
+}
+.purchase__set-icon {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+.purchase__platform-title {
+  color: var(--color-blue);
+  margin-bottom: 25px;
+}
+.purchase__platform-list {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  row-gap: 50px;
+  column-gap: 80px;
+}
+.purchase__platform-item {
+  display: flex;
+  align-items: center;
+}
+.purchase__platform-icon path {
+  fill: var(--color-yellow);
+  stroke: var(--color-yellow);
+}
+
+.footer {
+  background-color: var(--color-white);
+}
+.footer__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+@media (max-width: 767px) {
+  .footer__main {
+    flex-direction: column;
+    height: auto;
+  }
+}
+.footer__logos {
+  display: flex;
+  column-gap: 32px;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .footer__logos {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding-block: 25px;
+    row-gap: 25px;
+  }
+}
+.footer__logo--cyber {
+  background: url("/portfolio/assets/img/projects/cyberpunk/Cyberpunk_logo1-CJQIZK5-.svg") no-repeat center/cover;
+  height: 74px;
+  width: 320px;
+}
+@media (max-width: 1023px) {
+  .footer__logo--cyber {
+    height: 44px;
+    width: 175px;
+  }
+}
+.footer__logo--cdProject {
+  background: url("/portfolio/assets/img/projects/cyberpunk/cd-project-red-Bkbr6AKd.svg") no-repeat center/cover;
+  height: 74px;
+  width: 172px;
+}
+@media (max-width: 1023px) {
+  .footer__logo--cdProject {
+    height: 50px;
+    width: 116px;
+  }
+}
+.footer__content {
+  display: flex;
+  column-gap: 32px;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 767px) {
+  .footer__content {
+    flex-direction: column;
+    height: auto;
+    padding-block: 25px;
+    row-gap: 25px;
+  }
+}
+.footer__content a {
+  box-sizing: border-box;
+  transition: all var(--transition-duration) ease-in-out;
+  border-bottom: 1px solid transparent;
+  line-height: 1.4;
+}
+.footer__content a:hover {
+  border-bottom: 1px solid var(--color-dark);
+}
+.footer__extra {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+.footer__copyright {
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Фоновая подложка (затемнение) */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px); /* Красивое размытие заднего плана */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+/* Класс, который будет добавлять JS для показа окна */
+.modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Контентная часть окна */
+.modal__content {
+  background-color: #1a1a1a; /* Темная тема в стиле Cyberpunk */
+  color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2); /* Неоновое свечение */
+  border: 1px solid #00ffff;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+.modal.is-open .modal__content {
+  transform: translateY(0);
+}
+
+/* Кнопка закрытия (крестик) */
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 28px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal__close:hover {
+  color: #00ffff;
+}
+
+.modal__icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.modal__title {
+  font-size: 22px;
+  margin-bottom: 10px;
+}

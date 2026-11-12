@@ -1,0 +1,662 @@
+/* =================================================================
+   1. СИСТЕМА ЦВЕТОВЫХ ПЕРЕМЕННЫХ И СБРОС СТИЛЕЙ
+   ================================================================= */
+:root {
+  /* Светлая тема (базовая) */
+  --bg-color: #f8f9fa;
+  --bg-header-footer: #ffffff;
+  --text-main: #212529;
+  --text-title: #1a1a1a;
+  --text-subtitle: #6c757d;
+  --text-muted: #495057;
+  --border-color: #e9ecef;
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.04);
+  --card-hover-shadow: rgba(0, 0, 0, 0.1);
+  --card-incoming-border: #dee2e6;
+
+  /* Фирменные акценты OneSluG */
+  /* --color-accent: #4f46e5; */
+  --color-accent: #2c82c9;
+  --btn-bg: #1a1a1a;
+  --btn-text: #ffffff;
+
+  --transition-duration: 0.3s;
+}
+
+/* Переменные для Тёмной темы */
+body.dark-theme {
+  --bg-color: #191a23;
+  --bg-header-footer: #292a32;
+  --text-main: #f8f9fa;
+  --text-title: #ffffff;
+  --text-subtitle: #adb5bd;
+  --text-muted: #dee2e6;
+  --border-color: #383a45;
+  --card-bg: #2b2c36;
+  --card-shadow: rgba(0, 0, 0, 0.4) 0px 4px 24px;
+  --card-hover-shadow: rgba(79, 70, 229, 0.15) 0px 20px 40px;
+  --card-incoming-border: #4f5160;
+
+  /* Акценты инвертируются для читаемости на тёмном */
+  /* --color-accent: #818cf8; */
+  --color-accent: #2c82c9;
+  --btn-bg: #ffffff;
+  --btn-text: #191a23;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.5;
+  /* Плавный переход для глобального фона и цвета текста */
+  transition:
+    background-color var(--transition-duration) ease,
+    color var(--transition-duration) ease;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =================================================================
+   2. ШАПКА САЙТА (HEADER) И КНОПКА ТЕМЫ
+   ================================================================= */
+.header {
+  background-color: var(--bg-header-footer);
+  padding: 30px 0px 20px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+  transition:
+    background-color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  height: 60px; /* Зафиксируйте высоту контейнера логотипа */
+}
+
+.header__logo img {
+  height: 100%;
+  width: auto;
+}
+
+.header .container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-title);
+  letter-spacing: -1px;
+  transition: color var(--transition-duration) ease;
+}
+
+.logo span {
+  color: var(--color-accent);
+  transition: color var(--transition-duration) ease;
+}
+
+.logo-img--light {
+  display: none;
+}
+
+/* Когда активна темная тема — скрываем темный логотип и показываем белый */
+body.dark-theme .logo-img--dark {
+  display: none;
+}
+
+body.dark-theme .logo-img--light {
+  display: block;
+}
+
+.subtitle {
+  color: var(--text-subtitle);
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color var(--transition-duration) ease;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+/* =================================================================
+   СТИЛИ ДЛЯ СТАТУСА ЗАНЯТОСТИ (ИНДИКАТОР ДОСТУПНОСТИ)
+   ================================================================= */
+
+/* Главный контейнер индикатора */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Расстояние между точкой и текстом */
+  padding: 6px 12px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  user-select: none;
+  /* Плавная смена фона и рамок при переключении темы */
+  transition:
+    background-color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease,
+    transform 0.2s ease;
+}
+
+/* Легкий интерактивный эффект при наведении */
+.status-indicator:hover {
+  transform: translateY(-1px);
+}
+
+/* Пульсирующая зеленая/акцентная точка */
+.status-indicator__dot {
+  width: 8px;
+  height: 8px;
+  /* Использует ваш фирменный цвет акцента (фиолетовый/синий) */
+  background-color: #10b981; /* Изумрудно-зелёный (стандарт доступности) */
+  border-radius: 50%;
+  position: relative;
+}
+
+/* Создаем псевдоэлемент для эффекта расходящейся волны (пульса) */
+.status-indicator__dot::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: inherit;
+  /* Запуск бесконечной анимации волны */
+  animation: statusPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Текстовая подпись статуса */
+.status-indicator__text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: var(--text-muted);
+  white-space: nowrap; /* Защита от случайного переноса текста на мобилках */
+  transition: color var(--transition-duration) ease;
+}
+
+/* Дополнительная тонкая настройка для темной темы (по желанию) */
+body.dark-theme .status-indicator__text {
+  font-weight: 500; /* На темном фоне полужирный шрифт считывается мягче */
+}
+
+/* =================================================================
+   АНИМАЦИЯ КЛЮЧЕВЫХ КАДРОВ ДЛЯ СТАТУСА (PULSE)
+   ================================================================= */
+@keyframes statusPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(2.5); /* Волна плавно расширяется в 2.5 раза */
+    opacity: 0; /* И полностью растворяется */
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* =================================================================
+   СТИЛИ ДЛЯ ИКОНОК СОЦСЕТЕЙ В ХЕДЕРЕ
+   ================================================================= */
+
+/* Контейнер-обертка для кнопок действий (расширяем прошлый вариант) */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Увеличили зазор между логическими блоками */
+}
+
+/* Блок с иконками */
+.header__socials {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Расстояние между самими иконками */
+}
+
+/* Ссылка-обертка для иконки */
+.header__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--text-muted); /* Наследует мягкий цвет темы */
+  border-radius: 50%;
+  background-color: transparent;
+  transition:
+    color var(--transition-duration) ease,
+    transform 0.2s ease;
+}
+
+/* Эффект наведения: иконка плавно окрашивается в акцентный цвет и приподнимается */
+.header__social-link:hover {
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Сама SVG картинка */
+.social-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* =================================================================
+   ТУМБЛЕР СМЕНЫ ТЕМЫ (ПРАВО-ЛЕВО)
+   ================================================================= */
+.theme-switch {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+/* .theme-switch:hover {
+  transform: scale(1);
+} */
+
+/* Основа тумблера (овальный трек) */
+.theme-switch__track {
+  width: 58px;
+  height: 30px;
+  background-color: var(--border-color);
+  border: 1px solid var(--text-title);
+  box-sizing: border-box;
+  border-radius: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 3px;
+  transition:
+    background-color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease;
+}
+
+/* Круглый бегунок-маркер */
+.theme-switch__marker {
+  width: 22px;
+  height: 22px;
+  background-color: var(--text-title);
+  color: var(--bg-color);
+  border-radius: 50%;
+  position: absolute;
+  left: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Плавный перекат слева направо */
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color var(--transition-duration) ease,
+    color var(--transition-duration) ease;
+}
+
+/* Иконки внутри маркера */
+.theme-switch__icon {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease;
+}
+
+/* ПОЛОЖЕНИЕ ДЛЯ СВЕТЛОЙ ТЕМЫ (Слева): видна закрашенная луна */
+body:not(.dark-theme) .theme-switch__icon--sun {
+  opacity: 0;
+  transform: scale(0) rotate(45deg);
+}
+
+body:not(.dark-theme) .theme-switch__icon--moon {
+  opacity: 1;
+  transform: scale(1) rotate(0g);
+}
+
+/* ПОЛОЖЕНИЕ ДЛЯ ТЕМНОЙ ТЕМЫ (Справа): трек синеет, маркер улетает вправо, включается солнце */
+body.dark-theme .theme-switch__track {
+  background-color: rgba(79, 70, 229, 0.2);
+  border-color: var(--color-accent);
+}
+
+body.dark-theme .theme-switch__marker {
+  /* Сдвигаем кружок вправо ровно на разницу ширины трека */
+  transform: translateX(28px);
+  background-color: var(--color-accent);
+}
+
+body.dark-theme .theme-switch__icon--moon {
+  opacity: 0;
+  transform: scale(0) rotate(-45deg);
+}
+
+body.dark-theme .theme-switch__icon--sun {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+/* =================================================================
+   3. СЕКЦИЯ ПОРТФОЛИО И СЕТКА (GRID)
+   ================================================================= */
+.portfolio {
+  padding: 40px 0 80px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+  transition: color var(--transition-duration) ease;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 58px;
+  height: 3px;
+  background-color: var(--color-accent);
+  border-radius: 2px;
+  transition: background-color var(--transition-duration) ease;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* =================================================================
+   4. СТИЛИ КАРТОЧЕК ПРОЕКТОВ
+   ================================================================= */
+.project-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition:
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color var(--transition-duration) ease,
+    background-color var(--transition-duration) ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px var(--card-hover-shadow);
+}
+
+.project-card__image-wrapper,
+.card-image {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background-color: var(--border-color);
+  transition: background-color var(--transition-duration) ease;
+}
+
+.project-card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: translateY(0);
+  transition: transform 3s ease-in-out;
+}
+
+.project-card:hover .project-card__img {
+  transform: translateY(calc(-100% + 250px));
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  background: linear-gradient(135deg, var(--border-color) 0%, var(--card-incoming-border) 100%);
+}
+
+.project-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(79, 70, 229, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-card__overlay {
+  opacity: 1;
+}
+
+.project-card__link-text {
+  color: #ffffff;
+  background: rgba(26, 26, 26, 0.8);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+}
+
+.project-card__content,
+.card-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-card__title,
+.card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 10px;
+  transition: color var(--transition-duration) ease;
+}
+
+.project-card__text,
+.card-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+  transition: color var(--transition-duration) ease;
+}
+
+.project-card__btn,
+.card-btn {
+  align-self: flex-start;
+  padding: 11px 22px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition:
+    background-color 0.2s ease,
+    color var(--transition-duration) ease,
+    transform 0.1s ease;
+}
+
+.project-card__btn:hover,
+.card-btn:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+.project-card__btn:active,
+.card-btn:active {
+  transform: scale(0.98);
+}
+
+.project-card.incoming {
+  border: 2px dashed var(--card-incoming-border);
+  background-color: transparent;
+  box-shadow: none;
+  transition: border-color var(--transition-duration) ease;
+}
+
+.project-card.incoming:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.project-card.incoming .card-btn.disabled {
+  background-color: var(--border-color);
+  color: var(--text-subtitle);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* =================================================================
+   5. АНИМАЦИЯ КАРТОЧЕК ПРИ ПРОКРУТКЕ (SCROLL ANIMATION)
+   ================================================================= */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.project-card {
+  animation-timeline: view();
+  animation-range: entry 5% cover 30%;
+}
+
+/* =================================================================
+   6. ПОДВАЛ (FOOTER)
+   ================================================================= */
+.footer {
+  background-color: var(--bg-header-footer);
+  padding: 30px 0;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  color: var(--text-subtitle);
+  font-size: 0.9rem;
+  transition:
+    background-color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease,
+    color var(--transition-duration) ease;
+}
+
+@media (max-width: 1024px) {
+  .subtitle {
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 768px) {
+  .header .container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .subtitle {
+    margin: 0;
+  }
+}
+
+@media (max-width: 490px) {
+  .header {
+    padding-top: 20px;
+    padding-bottom: 15px;
+  }
+  .subtitle {
+    font-size: 15px;
+  }
+  .header__actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .header__socials {
+    grid-column: 1/3;
+    grid-row: 2/3;
+    justify-self: center;
+  }
+  .theme-switch {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    justify-self: end;
+  }
+  .status-indicator {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    justify-self: start;
+  }
+  .status-indicator__text {
+    font-size: 0.75rem;
+  }
+  body.dark-theme .status-indicator__text {
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .section-title {
+    font-size: 24px;
+  }
+  .section-title::after {
+    width: 50px;
+  }
+  .portfolio {
+    padding-block: 20px;
+  }
+  .project-card__image-wrapper {
+    height: 210px;
+  }
+}
