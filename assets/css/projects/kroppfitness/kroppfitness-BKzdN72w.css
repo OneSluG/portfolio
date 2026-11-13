@@ -598,7 +598,6 @@ body {
   line-height: 1.75;
   color: var(--color-light-gray);
   background-color: var(--color-dark);
-  max-width: 1920px;
 }
 
 .container {
